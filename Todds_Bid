@@ -1,0 +1,55 @@
+/**
+* i have ItemModel and BidderModel as parameters for now until other classes are made
+*/
+public class Bid<ItemModel, BidderModel> {
+	private double amount  = 0; 
+	// bidder : Bidder model 
+	private BidderModel bidders; //hope it contains name of the bidder. 
+	// item : item model 
+	private ItemModel item; 
+	/**
+	 * 
+	 */
+	public Bid(double amount, BidderModel bidders, ItemModel item) {
+	//	this.auctionID = 0;
+		this.amount = amount;
+	//	this.highestBid = 0;
+		this.item = item;
+		this.bidders = bidders; 
+	//	biddingHistory = new LinkedList();
+		}
+	/** 
+	 * @return bid placed
+	 */
+	public double getAmount() {
+		return amount;
+	}
+	/**
+	 * sets the amount to the item 
+	 * @param amount for bid 
+	 */
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	/**
+	 * gets the item to be bid on 
+	 * @return object being bid on 
+	 */
+	public ItemModel getItem() {
+		return item;
+	}
+	/**
+	 * gets the bidder
+	 * @return
+	 */
+	public BidderModel getBidders() {
+		return bidders;
+	}
+	/**
+	 * 
+	 * @param bidders
+	 */
+	public void setBidders(BidderModel bidders) {
+		this.bidders = bidders;
+	}
+}
