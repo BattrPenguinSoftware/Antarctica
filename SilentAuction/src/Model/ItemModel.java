@@ -1,7 +1,4 @@
 package Model;
-
-
-
 /**
  * The Class ItemModel, represents an item.
  * @author Audrey Chavarria 5/21/15
@@ -16,7 +13,7 @@ public class ItemModel {
 	private String name;
 	
 	/** The donor who donated the item. */
-	private DonorModel donor;
+	private Donor donor;
 	
 	/** The bid history of the item. */
 	private Bid[] bidHistory;
@@ -32,7 +29,7 @@ public class ItemModel {
 	 * @param theDonor of the item
 	 * @param theItemNumber that uniquely identifies it
 	 */
-	public ItemModel(String theName, DonorModel theDonor, int theItemNumber){
+	public ItemModel(String theName, Donor theDonor, int theItemNumber){
 		name = theName;
 		donor = theDonor;
 		bidHistory = {null};
