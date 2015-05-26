@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import Model.Auction;
 import Model.Bid;
 import Model.ItemModel;
+import View.AbstractView;
 import View.ItemView;
+import View.PlaceBidView;
 
 
 /** The controller handles user input events like mouse clicks and keystrokes **/
@@ -13,6 +15,7 @@ public class ItemController {
 	
 	ArrayList<ItemModel> allItems;
 	ItemModel currentItem;
+	AbstractView currentView;
 	
 	
 	public ItemController(Auction theAuction) {
@@ -25,14 +28,18 @@ public class ItemController {
 					+ "does not have any items in it");
 		}
 		
-		ItemView iView = new ItemView(currentItem);
+		currentView = new ItemView(this, currentItem);
 		
 	}
 	
 	
-	//public Bid placeBid() {
+	public void placeBid() {
+		currentView.close();
+		currentView = new PlaceBidView(this);
 		
-	//}
+		
+		
+	}
 	
 	
 	
