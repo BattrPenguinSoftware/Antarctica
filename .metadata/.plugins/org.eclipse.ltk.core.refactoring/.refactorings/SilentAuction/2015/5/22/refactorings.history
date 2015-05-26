@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Controller.startGUI&apos; to &apos;StartGUI&apos;&#x0A;- Original project: &apos;SilentAuction&apos;&#x0A;- Original element: &apos;Controller.startGUI&apos;&#x0A;- Renamed element: &apos;Controller.StartGUI&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;startGUI&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;Controller{startGUI.java[startGUI" matchStrategy="1" name="StartGUI" qualified="false" references="true" similarDeclarations="false" stamp="1432595647518" textual="false" version="1.0"/>
+</session>

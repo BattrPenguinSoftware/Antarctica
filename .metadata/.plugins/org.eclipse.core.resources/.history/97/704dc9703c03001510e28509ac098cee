@@ -1,0 +1,22 @@
+package Controller;
+
+import Model.Bid;
+
+
+
+public class ItemController {
+	
+	
+	public ItemController() {
+		
+	}
+	
+	
+	public Bid placeBid() {
+		
+	}
+	
+	
+	
+	
+}

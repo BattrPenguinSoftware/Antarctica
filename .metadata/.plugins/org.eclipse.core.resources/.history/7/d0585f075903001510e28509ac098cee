@@ -1,0 +1,37 @@
+package Model;
+
+import java.awt.Image;
+import java.util.ArrayList;
+
+public class Auction {
+	
+	ArrayList<ItemModel> items;
+	
+	/**
+	 * Create a new Auction object with an empty list of items
+	 */
+	public Auction() {
+		items = new ArrayList<ItemModel>();
+		
+		//For testing purposes, populating the auction with
+		//some items to start out with
+		addItem(new ItemModel("Cheetarah Vinyl Figure", new Donor(), int theItemNumber, Image theImage, double thePrice));
+	}
+	
+	/**
+	 * Add an item to the auction
+	 * @param newItem the item to add
+	 */
+	public void addItem(ItemModel newItem){
+		items.add(newItem);
+	}
+	
+	/**
+	 * Return the list of all items in the auction
+	 * @return the list of items
+	 */
+	public ArrayList<ItemModel> getItems() {
+		return items;
+	}
+
+}

@@ -1,0 +1,17 @@
+package View;
+
+import Model.User;
+
+
+public class ItemView {
+	
+	
+	public ItemView() {
+		
+	}
+	
+	public void greetUser(User theUser){
+		
+	}
+	
+}

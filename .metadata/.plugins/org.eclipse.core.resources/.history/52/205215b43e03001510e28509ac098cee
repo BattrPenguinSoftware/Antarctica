@@ -1,0 +1,28 @@
+package Controller;
+
+import Model.Bid;
+import Model.ItemModel;
+import View.ItemView;
+
+
+
+public class ItemController {
+	
+	ItemModel currentItem;
+	
+	public ItemController() {
+		
+		currentItem = 
+		ItemView iView = new ItemView(ItemModel startingItem);
+		
+	}
+	
+	
+	public Bid placeBid() {
+		
+	}
+	
+	
+	
+	
+}

@@ -1,5 +1,7 @@
 package Model;
 
+import java.awt.Image;
+
 
 
 /**
@@ -9,20 +11,22 @@ package Model;
  */
 public class ItemModel {
 	
-	/** The image associated witht the item. */
-	private File image;
+	/** The image associated with the item. */
+	private Image image;
 	
 	/** The name of the item. */
 	private String name;
 	
 	/** The donor who donated the item. */
-	private DonorModel donor;
+	private Donor donor;
 	
 	/** The bid history of the item. */
 	private Bid[] bidHistory;
 	
 	/** The item number that uniquely identifies it. */
 	private int itemNumber;
+	
+	private double startingPrice;
 	
 	
 	/**
@@ -32,19 +36,21 @@ public class ItemModel {
 	 * @param theDonor of the item
 	 * @param theItemNumber that uniquely identifies it
 	 */
-	public ItemModel(String theName, DonorModel theDonor, int theItemNumber){
+	public ItemModel(String theName, Donor theDonor, int theItemNumber, Image theImage, double thePrice){
 		name = theName;
 		donor = theDonor;
-		bidHistory = {null};
+		bidHistory = new Bid[10];
 		itemNumber = theItemNumber;	
+		image = theImage;
+		startingPrice = thePrice;
 	}	
 	
 	/**
-	 * Gets the detials.
+	 * Gets the details.
 	 *
-	 * @return the detials
+	 * @return the details
 	 */
-	public void getDetials( ) {
+	public void getDetails( ) {
 	}
 	
 	/**

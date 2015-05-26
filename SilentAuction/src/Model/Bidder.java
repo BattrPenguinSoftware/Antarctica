@@ -1,4 +1,4 @@
-package model;
+package Model;
 
 import java.util.ArrayList;
 /*
@@ -11,7 +11,7 @@ public class Bidder extends User{
 	//create arraylist to hold bidding history
 	ArrayList<Bid> bidHistory = new ArrayList<Bid>();
 	
-	public itemsBidOn(ItemModel item) {
+	public ItemModel itemsBidOn(ItemModel item) {
 		
 		return item;
 	}

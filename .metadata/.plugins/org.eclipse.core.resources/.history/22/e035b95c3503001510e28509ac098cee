@@ -1,0 +1,29 @@
+package View;
+
+import Model.User;
+
+
+public class ItemView {
+	
+	
+	public ItemView() {
+		
+	}
+	
+	public void greetUser(User theUser){
+		
+	}
+	
+	public void startBidView() {
+		
+	}
+	
+	public void startConfirmationView() {
+		
+	}
+	
+	public void startAdminView() {
+		
+	}
+	
+}

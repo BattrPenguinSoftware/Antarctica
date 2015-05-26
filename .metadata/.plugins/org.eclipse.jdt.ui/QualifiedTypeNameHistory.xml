@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+<fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="com.google.zxing.LuminanceSource"/>
+<fullyQualifiedTypeName name="com.google.zxing.BinaryBitmap"/>
+<fullyQualifiedTypeName name="com.google.zxing.qrcode.QRCodeReader"/>
+<fullyQualifiedTypeName name="com.google.zxing.ReaderException"/>
+<fullyQualifiedTypeName name="com.google.zxing.Result"/>
+<fullyQualifiedTypeName name="com.google.zxing.common.HybridBinarizer"/>
+<fullyQualifiedTypeName name="com.google.zxing.client.j2se.BufferedImageLuminanceSource"/>
+</qualifiedTypeNameHistroy>

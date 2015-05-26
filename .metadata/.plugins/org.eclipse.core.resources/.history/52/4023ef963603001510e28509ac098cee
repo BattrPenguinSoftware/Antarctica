@@ -1,0 +1,50 @@
+package View;
+
+import javax.swing.JFrame;
+
+import Model.User;
+
+
+public class ItemView {
+	
+	ItemFrame theFrame;
+	
+	
+	public ItemView() {
+		
+		
+		theFrame = new ItemFrame();
+		theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		theFrame.setVisible(true);
+		
+		
+	}
+	
+	public void greetUser(User theUser){
+		
+	}
+	
+	public void startBidView() {
+		
+	}
+	
+	public void startConfirmationView() {
+		
+	}
+	
+	public void startAdminView() {
+		
+	}
+	
+	class ItemFrame extends JFrame {
+		
+		private static final int DEFAULT_WIDTH = 300;
+		private static final int DEFAULT_HEIGHT = 600;
+		
+		public ItemFrame() {
+			setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+			setTitle("Silent Auction");
+		}
+	}
+	
+}
