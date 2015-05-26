@@ -26,17 +26,17 @@ public class ItemModel {
 	/** The item number that uniquely identifies it. */
 	private int itemNumber;
 
+	/** The current bid. */
 	private double currentBid;
 
 	/**
 	 * Constructor for the item.
 	 *
-	 * @param theName
-	 *            of the item
-	 * @param theDonor
-	 *            of the item
-	 * @param theItemNumber
-	 *            that uniquely identifies it
+	 * @param theName            of the item
+	 * @param theDonor            of the item
+	 * @param theItemNumber            that uniquely identifies it
+	 * @param theImage the the image
+	 * @param initialPrice the initial price
 	 */
 	public ItemModel(String theName, Donor theDonor, int theItemNumber,
 			Image theImage, double initialPrice) {
@@ -50,11 +50,10 @@ public class ItemModel {
 	}
 
 	/**
-	 * Verify new bid. somoneone try to place a new bid, verify checks current
+	 * Verify new bid and tells wether . somoneone try to place a new bid, verify checks current
 	 * bid price and says if its is new bidd is greater than current price
-	 * 
-	 * @param NewBid
-	 *            the new bid
+	 *
+	 * @param newBid the new bid
 	 * @return true, if successful
 	 */
 	private boolean verifyNewBid(double newBid) {
@@ -62,13 +61,18 @@ public class ItemModel {
 	}
 
 	// add to end of arryalsit, and update current highest bid
+	/**
+	 * Place new bid.
+	 *
+	 * @param theNewBid the the new bid
+	 */
 	public void placeNewBid(Bid theNewBid) {
 		bidHistory.add(theNewBid);
 		currentBid = theNewBid.getAmount();
 
 	}
 
-	// ///////////////////////////
+	// ///////////******<<<>>>>*****////////////////
 	/**
 	 * Saveinfo. worry about it later
 	 */
@@ -76,7 +80,7 @@ public class ItemModel {
 	}// ////////////////////////////
 
 	/**
-	 * Gets the bid history. return whole arraylist
+	 * Gets the entire bid history. 
 	 * 
 	 * @return the bid history
 	 */
@@ -85,7 +89,7 @@ public class ItemModel {
 	}
 
 	/**
-	 * Gets the max bid. return latest bid obj from araylist
+	 * Gets the latest max bid.
 	 * 
 	 * @return the max bid
 	 */
@@ -93,19 +97,49 @@ public class ItemModel {
 		return bidHistory.get(bidHistory.size() - 1);
 	}
 
-	public void getCurrentBid() {
+	/**
+	 * Gets the current bid price.
+	 *
+	 * @return the current bid price
+	 */
+	public double getCurrentBidPrice() {
+		return currentBid;
 	}
 
-	public void getItemNumber() {
+	/**
+	 * Gets the unique item number.
+	 *
+	 * @return the item number
+	 */
+	public int getItemNumber() {
+		return itemNumber;
 	}
 
-	public void getImage() {
+	/**
+	 * Gets the image of the item.
+	 *
+	 * @return the image
+	 */
+	public Image getImage() {
+		return image;
 	}
 
-	public void getName() {
+	/**
+	 * Gets the name of the item.
+	 *
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
 	}
 
-	public void getDonor() {
+	/**
+	 * Gets the donor of the item.
+	 *
+	 * @return the donor
+	 */
+	public Donor getDonor() {
+		return donor;
 	}
 
 }
