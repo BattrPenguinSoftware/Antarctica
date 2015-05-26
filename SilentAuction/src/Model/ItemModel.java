@@ -46,6 +46,10 @@ public class ItemModel {
 		startingPrice = thePrice;
 	}	
 	
+	public Bid getHighBid() {
+		return bidHistory.get(bidHistory.size() - 1);
+	}
+	
 	public Image getImage() {
 		return image;
 	}

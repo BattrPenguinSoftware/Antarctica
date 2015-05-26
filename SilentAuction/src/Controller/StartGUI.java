@@ -24,7 +24,6 @@ public class StartGUI {
 		
 	}
 	
-	//TODO: populate auction with items
 	private static Auction createAuction() {
 		
 		Auction result = new Auction();

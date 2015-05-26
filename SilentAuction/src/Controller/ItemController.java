@@ -15,7 +15,9 @@ public class ItemController {
 	
 	ArrayList<ItemModel> allItems;
 	ItemModel currentItem;
-	AbstractView currentView;
+	//AbstractView currentView;
+	ItemView iView;
+	PlaceBidView pView;
 	
 	
 	public ItemController(Auction theAuction) {
@@ -28,16 +30,39 @@ public class ItemController {
 					+ "does not have any items in it");
 		}
 		
-		currentView = new ItemView(this, currentItem);
-		
+		iView = new ItemView(this, currentItem);
+		pView = null;
 	}
 	
 	
 	public void placeBid() {
-		currentView.close();
-		currentView = new PlaceBidView(this);
+		iView.close();
+		pView = new PlaceBidView(currentItem.getHighBid().getAmount(), this);
 		
 		
+		
+	}
+	
+	public void verifyBid(Double newAmount){
+		Boolean valid = newAmount > currentItem.getHighBid().getAmount();
+		
+		if (valid){
+			confirmBid(newAmount);
+		} else {
+			
+			pView.bidHigher(newAmount);
+		}
+	}
+	
+	public void confirmBid(Double newAmount) {
+		pView.close();
+		//currentView = new ConfirmBidView(newAmount);
+	}
+
+
+	public void cancelBid() {
+		pView.close();
+		iView = new ItemView(this, currentItem);
 		
 	}
 	

@@ -1,12 +1,13 @@
 package View;
 
-import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public abstract class AbstractView {
 	
 	private WindowFrame frame;
+	
 	
 	public AbstractView(){
 		createFrame();
@@ -24,11 +25,17 @@ public abstract class AbstractView {
 		frame.setVisible(true);
 	}
 	
+	public WindowFrame getFrame() {
+		return frame;
+	}
+	
 	
 	/**
 	 * Closes the current view
 	 */
 	public void close(){
-		frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+		frame.dispose();
 	}
+
+	
 }
