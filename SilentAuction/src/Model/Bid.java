@@ -1,8 +1,9 @@
 package Model;
 /**
- * 
+ * bid objects created after each bidder places a bid 
  * @author Todd Robbins
  */
+@SuppressWarnings("hiding")
 public class Bid<ItemModel, Bidder> {
 	private double amount  = 0; 
 	private Bidder bidders; 
@@ -20,13 +21,6 @@ public class Bid<ItemModel, Bidder> {
 	 */
 	public double getAmount() {
 		return amount;
-	}
-	/**
-	 * sets the amount to the item 
-	 * @param amount for bid 
-	 */
-	public void setAmount(double amount) {
-		this.amount = amount;
 	}
 	/**
 	 * gets the item to be bid on 
