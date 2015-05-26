@@ -1,6 +1,7 @@
 package Model;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 
 
@@ -21,7 +22,7 @@ public class ItemModel {
 	private Donor donor;
 	
 	/** The bid history of the item. */
-	private Bid[] bidHistory;
+	private ArrayList<Bid> bidHistory;
 	
 	/** The item number that uniquely identifies it. */
 	private int itemNumber;
@@ -39,11 +40,35 @@ public class ItemModel {
 	public ItemModel(String theName, Donor theDonor, int theItemNumber, Image theImage, double thePrice){
 		name = theName;
 		donor = theDonor;
-		bidHistory = new Bid[10];
+		bidHistory = new ArrayList<Bid>();
 		itemNumber = theItemNumber;	
 		image = theImage;
 		startingPrice = thePrice;
 	}	
+	
+	public Image getImage() {
+		return image;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public Donor getDonor() {
+		return donor;
+	}
+	
+	public int getNumber() {
+		return itemNumber;
+	}
+	
+	public ArrayList<Bid> getBidHistory() {
+		return bidHistory;
+	}
+	
+	public void addBid(Bid newBid) {
+		bidHistory.add(newBid);
+	}
 	
 	/**
 	 * Gets the details.
@@ -59,16 +84,16 @@ public class ItemModel {
 	 * @param NewBid the new bid
 	 * @return true, if successful
 	 */
-	private boolean verifyNewBid(double NewBid ){
-	}
+	//private boolean verifyNewBid(double NewBid ){
+	//}
 	
 	/**
 	 * Gets the max bid.
 	 *
 	 * @return the max bid
 	 */
-	public Bid getMaxBid(){		
-	}
+	//public Bid getMaxBid(){		
+	//}
 	
 	/**
 	 * Saveinfo.
@@ -81,7 +106,7 @@ public class ItemModel {
 	 *
 	 * @return the bid history
 	 */
-	public void getBidHistory(){		
-	}
+	//public void getBidHistory(){		
+	//}
 
 }

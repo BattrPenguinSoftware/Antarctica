@@ -7,9 +7,14 @@ import java.util.ArrayList;
 public class Bidder extends User{
 	
 	public static ItemModel item;
+	public String name;
 	
 	//create arraylist to hold bidding history
 	ArrayList<Bid> bidHistory = new ArrayList<Bid>();
+	
+	public Bidder(String name){
+		this.name = name;
+	}
 	
 	public ItemModel itemsBidOn(ItemModel item) {
 		
@@ -20,4 +25,9 @@ public class Bidder extends User{
 		
 		return item;
 	}
+	
+	public String getName() {
+		return name;
+	}
+	
 }

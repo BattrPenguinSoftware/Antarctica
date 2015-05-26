@@ -8,7 +8,7 @@ import Model.ItemModel;
 import View.ItemView;
 
 
-
+/** The controller handles user input events like mouse clicks and keystrokes **/
 public class ItemController {
 	
 	ArrayList<ItemModel> allItems;
@@ -30,9 +30,9 @@ public class ItemController {
 	}
 	
 	
-	public Bid placeBid() {
+	//public Bid placeBid() {
 		
-	}
+	//}
 	
 	
 	

@@ -11,15 +11,20 @@ public class Donor extends User {
 	ArrayList<ItemModel> itemList = new ArrayList<ItemModel>();
 	
 	public Donor(String company, Image logo){
+		
 		this.company = company;
 		this.logo = logo;
 	}
 	
 	public void donate(ItemModel item) {
-		int itemCount;
-		for (int i = 0; i < itemList.size(); i++) {
-			itemList.add(item);
-			itemCount++;
-		}	
+		itemList.add(item);
+	}
+	
+	public String getCompany() {
+		return company;
+	}
+	
+	public Image getLogo() {
+		return logo;
 	}
 }

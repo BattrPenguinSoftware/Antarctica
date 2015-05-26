@@ -13,4 +13,9 @@ public abstract class User {
 		this.email = email;
 		this.QRCode = QRCode;
 	}
+	
+	public String getName() {
+		return name;
+	}
+	
 }

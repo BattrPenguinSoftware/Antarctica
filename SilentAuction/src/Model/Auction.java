@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class Auction {
 	
@@ -20,16 +21,23 @@ public class Auction {
 		//For testing purposes, populating the auction with
 		//an item to start out with
 		try{
-			ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-			InputStream input = classLoader.getResourceAsStream("SilentAuction/resources/Cheetarah.jpg");
-			Image itemImage = ImageIO.read(input);
-			input = classLoader.getResourceAsStream("SilentAuction/resources/pop_logo.jpg");
-			Image logo = ImageIO.read(input);
 			
-			addItem(new ItemModel("Cheetarah Vinyl Figure", new Donor("POP Vinyl", logo), 
-				200, itemImage, 15.50));
+			Image itemImage = new ImageIcon("resources/Cheetarah.jpg").getImage();
+			Image logo = new ImageIcon("resources/pop_logo.png").getImage();
+			ItemModel defaultItem = new ItemModel("Cheetarah Vinyl Figure", new Donor("POP Vinyl", logo), 
+					200, itemImage, 12.00);
+			defaultItem.addBid(new Bid(13.00, new Bidder("Marilyn Oberlander"), defaultItem));
+			defaultItem.addBid(new Bid(14.00, new Bidder("Violet Montagu"), defaultItem));
+			defaultItem.addBid(new Bid(15.00, new Bidder("Danielle Zubiate"), defaultItem));
+			defaultItem.addBid(new Bid(17.00, new Bidder("Kamau Kogo"), defaultItem));
+			defaultItem.addBid(new Bid(18.50, new Bidder("Mieko Maki"), defaultItem));
+			defaultItem.addBid(new Bid(19.25, new Bidder("Penny Rolle"), defaultItem));
 			
-		} catch ( IOException e ) { 
+			
+			
+			addItem(defaultItem);
+			
+		} catch ( Exception e ) { 
 			System.out.println("There was an error trying to load item or donor images: " + e);
 		}
 	}
