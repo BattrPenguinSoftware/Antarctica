@@ -6,18 +6,16 @@ import java.util.ArrayList;
  */
 public class Bidder extends User{
 	
-	public static ItemModel item;
-	
+	public Bidder(String name, String phoneNumber, String email, String QRCode) {
+		super(name, phoneNumber, email, QRCode);
+		// TODO Auto-generated constructor stub
+	}
+
 	//create arraylist to hold bidding history
 	ArrayList<Bid> bidHistory = new ArrayList<Bid>();
 	
 	public ArrayList<Bid> itemsBidOn() {
 		
 		return bidHistory;
-	}
-	
-	public ItemModel getItem() {
-		
-		return item;
 	}
 }
