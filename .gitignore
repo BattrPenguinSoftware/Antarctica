@@ -1,0 +1,6 @@
+.metadata*
+.recommenders*
+SilentAuction/hs_err_*
+SilentAuction/src/eclimd.log
+*.class
+*eclimd.log
