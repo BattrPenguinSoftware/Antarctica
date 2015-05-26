@@ -116,7 +116,7 @@ public class ItemView extends AbstractView{
 		deets.setLayout(new GridLayout(3,1));
 		
 		//add item number
-		String numberString = "Item # " + theItem.getNumber();
+		String numberString = "Item # " + theItem.getItemNumber();
 		itemNumber = new JLabel(numberString);
 		itemNumber.setFont(itemNumber.getFont().deriveFont(20.0f));
 		deets.add(itemNumber);
@@ -224,7 +224,7 @@ public class ItemView extends AbstractView{
 				highBidPanel.add(winningAmount, BorderLayout.WEST);
 				
 				//Add name of Bidder with highest amount
-				winningName = new JLabel(highBid.getBidder().getName());
+				winningName = new JLabel(highBid.getBidders().getName());
 				winningName.setFont(winningAmount.getFont().deriveFont(26.0f));
 				highBidPanel.add(winningName, BorderLayout.CENTER);
 				
@@ -255,7 +255,7 @@ public class ItemView extends AbstractView{
 				amount.setFont(amount.getFont().deriveFont(18.0f));
 				currentPanel.add(amount, BorderLayout.WEST);
 				//Load bidder's name
-				JLabel name = new JLabel(currentBid.getBidder().getName());
+				JLabel name = new JLabel(currentBid.getBidders().getName());
 				name.setFont(name.getFont().deriveFont(18.0f));
 				currentPanel.add(name, BorderLayout.CENTER);
 				historyPanel.add(currentPanel);
@@ -267,7 +267,7 @@ public class ItemView extends AbstractView{
 		}
 		
 		
-
+		
 	}
 	
 	/**
