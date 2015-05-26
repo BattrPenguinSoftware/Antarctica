@@ -17,7 +17,8 @@ public class Donor extends User {
 
 	}
 	
-	public Donor(String name, String phoneNumber, String email, String QRCode, Image logo, String company) {
+	public Donor(String name, String phoneNumber, String email, String QRCode, 
+			Image logo, String company) {
 		super(name, phoneNumber, email, QRCode);
 		setLogo(logo);
 		setCompany(company);

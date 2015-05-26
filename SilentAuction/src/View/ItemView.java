@@ -23,6 +23,8 @@ import javax.swing.border.Border;
 import Model.Bid;
 import Model.Donor;
 import Model.ItemModel;
+import Model.Bidder;
+import Model.User;
 import Controller.ItemController;
 
 /**
@@ -224,7 +226,7 @@ public class ItemView extends AbstractView{
 				highBidPanel.add(winningAmount, BorderLayout.WEST);
 				
 				//Add name of Bidder with highest amount
-				winningName = new JLabel(highBid.getBidders().getName());
+				winningName = new JLabel(((User) highBid.getBidders()).getName());
 				winningName.setFont(winningAmount.getFont().deriveFont(26.0f));
 				highBidPanel.add(winningName, BorderLayout.CENTER);
 				
@@ -255,7 +257,7 @@ public class ItemView extends AbstractView{
 				amount.setFont(amount.getFont().deriveFont(18.0f));
 				currentPanel.add(amount, BorderLayout.WEST);
 				//Load bidder's name
-				JLabel name = new JLabel(currentBid.getBidders().getName());
+				JLabel name = new JLabel(((User) currentBid.getBidders()).getName());
 				name.setFont(name.getFont().deriveFont(18.0f));
 				currentPanel.add(name, BorderLayout.CENTER);
 				historyPanel.add(currentPanel);

@@ -37,14 +37,15 @@ public class ItemController {
 	
 	public void placeBid() {
 		iView.close();
-		pView = new PlaceBidView(currentItem.getHighBid().getAmount(), this);
+		pView = new PlaceBidView(currentItem.getMaxBid().getAmount(), this);
 		
 		
 		
 	}
 	
+	//TODO: Change to use the ItemModel's verifyBid method
 	public void verifyBid(Double newAmount){
-		Boolean valid = newAmount > currentItem.getHighBid().getAmount();
+		Boolean valid = newAmount > currentItem.getMaxBid().getAmount();
 		
 		if (valid){
 			confirmBid(newAmount);
