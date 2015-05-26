@@ -8,15 +8,14 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Insets;
-import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -24,12 +23,17 @@ import javax.swing.border.Border;
 import Model.Bid;
 import Model.Donor;
 import Model.ItemModel;
-import Model.User;
+import Controller.ItemController;
 
-
-public class ItemView {
+/**
+ * Displays an Item and its details
+ * 
+ * @author reagan
+ *
+ */
+public class ItemView extends AbstractView{
 	
-	private ItemFrame frame;
+	private WindowFrame frame;
 	private JPanel pane;
 	private ItemPictureComponent itemPic;
 	private JLabel itemName;
@@ -37,27 +41,38 @@ public class ItemView {
 	private JLabel donorName;
 	private LogoPictureComponent donorLogo;
 	private JPanel bidHistoryPanel;
+	private ItemController iController;
 	
 	
-	public ItemView(ItemModel firstItem) {
-		
-		createFrame();
+	/** 
+	 * Creates an ItemView object and initializes
+	 * it to display the given item
+	 * @param firstItem the item to initially display
+	 */
+	public ItemView(ItemController iController, ItemModel firstItem) {
+		super();
+		this.iController = iController;
+		frame = super.getFrame();
 		createPane();
 		frame.add(pane);
 		
-		setItemDetails(firstItem);
-		
-		
-		
-		
-		
+		initializeView(firstItem);
+
 	}
 	
-	private void setItemDetails(ItemModel theItem){
+
+	
+	/**
+	 * A helper method that loads and displays the item details,
+	 * including picture, item name and number,
+	 * and bid history.
+	 * 
+	 * @param theItem the item currently being displayed
+	 */
+	private void initializeView(ItemModel theItem){
 		//add item picture to view
 		itemPic = new ItemPictureComponent(theItem.getImage());
 		GBC picConstraints = new GBC(1, 1, 3, 3);
-		//picConstraints.setWeight(0, 0);
 		picConstraints.setFill(GridBagConstraints.BOTH);
 		pane.add(itemPic, picConstraints);
 		
@@ -71,7 +86,7 @@ public class ItemView {
 		itemName.setFont(itemName.getFont().deriveFont(28.0f));
 		pane.add(itemName, nameConstraints);
 		
-		
+		//add item details (number, donor, donor pic)
 		GBC itemDetailConstraints = new GBC(4, 1, 2, 3);
 		itemDetailConstraints.setFill(GridBagConstraints.VERTICAL);
 		itemDetailConstraints.setWeight(00,00);
@@ -86,49 +101,45 @@ public class ItemView {
 		//TODO: Adjust so it's based off screen size
 		bidConstraints.setInsets(5,70,10,70);
 		bidHistoryPanel = new BidHistoryComponent(theItem.getBidHistory());
-		
 		pane.add(bidHistoryPanel, bidConstraints);
 	}
-	
+
+	/**
+	 * Helper method that's in charge of creating the JPanel
+	 * for the item# and donor info
+	 * 
+	 * @param theItem the item whose details are being displayed
+	 * @return the JPanel containing this info
+	 */
 	private JPanel createItemDetailPanel(ItemModel theItem){
 		JPanel deets = new JPanel();
 		deets.setLayout(new GridLayout(3,1));
 		
 		//add item number
-		//BC numberConstraints = new GBC(4, 2, 2, 1);
-		//numberConstraints.setFill(GridBagConstraints.NONE);
-		//numberConstraints.setWeight(0,0);
 		String numberString = "Item # " + theItem.getNumber();
 		itemNumber = new JLabel(numberString);
 		itemNumber.setFont(itemNumber.getFont().deriveFont(20.0f));
 		deets.add(itemNumber);
-		//pane.add(itemNumber, numberConstraints);
 		
 		//add donor name
 		Donor theDonor = theItem.getDonor();
 		
-		//GBC donorConstraints = new GBC(4, 3, 2, 1);
-		//donorConstraints.setFill(GridBagConstraints.NONE);
-		//donorConstraints.setWeight(0,0);
 		String donorString = "Donated by " + theDonor.getCompany();
 		donorName = new JLabel(donorString);
 		donorName.setFont(donorName.getFont().deriveFont(18.0f));
-		//pane.add(donorName, donorConstraints);
 		deets.add(donorName);
 		
 		//add donor logo
-//				GBC logoConstraints = new GBC(4, 4, 2, 2);
-//			logoConstraints.setFill(GridBagConstraints.BOTH);
-//		logoConstraints.setWeight(0,0);
-		//logoConstraints.setInsets(2);
 		donorLogo = new LogoPictureComponent(theDonor.getLogo());
-	//	pane.add(donorLogo, logoConstraints);
 		deets.add(donorLogo);
 		
 		return deets;
 	}
 	
 	
+	/**
+	 * Creates the JPanel that will hold all the components being displayed
+	 */
 	private void createPane() {
 		
 		GridBagLayout layout = new GridBagLayout();
@@ -137,69 +148,54 @@ public class ItemView {
 		pane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 		//Add "Place a bid button" to view
 		GBC buttonConstraints = new GBC(0, 13, 6, 1);
-		//buttonConstraints.setInsets(1, 0, 0, 0);
 		buttonConstraints.setFill(GridBagConstraints.BOTH);
 		buttonConstraints.setWeight(100,10);
-		//buttonConstraints.setInsets(0,150,0,0);
 		JButton bidButton = new JButton("Place a Bid");
+		bidButton.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				iController.placeBid();
+				
+			}
+			
+		});
 		pane.add(bidButton, buttonConstraints);
 		
-		
-		
-		
 	}
 	
-	/**
-	 * A helper method to create the JFrame to hold all the ItemView
-	 * components.
-	 */
-	private void createFrame() {
-		frame = new ItemFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(false);
-		
-
-		
-		frame.setVisible(true);
-	}
 	
+		
 	/**
-	 * Refreshes the view with the most current item details
+	 * A JPanel to display the item's
+	 * bid history, including current
+	 * high bidder
 	 * 
-	 * @param theItem the item being displayed
+	 * @author reagan
+	 *
 	 */
-	public void updateView(ItemModel theItem) {
-		
-		itemPic.setImage(theItem.getImage());
-		//redraw components
-	}
-	
-	public void greetUser(User theUser){
-		
-	}
-	
-	public void startBidView() {
-		
-	}
-	
-	public void startConfirmationView() {
-		
-	}
-	
-	public void startAdminView() {
-		
-	}
-	
 	@SuppressWarnings("serial")
 	class BidHistoryComponent extends JPanel{
 		
+		/** The entire bid history **/
 		ArrayList<Bid> theBids;
+		
+		/** a JPanel to hold the highest bid **/
 		JPanel highBidPanel;
+		
+		/** a JLabel to hold the highest amount **/
 		JLabel winningAmount;
+		
+		/** a JLabel to hold the name of the highest bidder **/
 		JLabel winningName;
+		
+		/** a JPanel to display the recent bid history**/
 		JPanel historyPanel;
 		
-		
+		/**
+		 * Creates a BidHistoryComponent object from the given bid history
+		 * @param theBids the bid history
+		 */
 		public BidHistoryComponent(ArrayList<Bid> theBids) {
 			
 			
@@ -211,6 +207,9 @@ public class ItemView {
 			
 		}
 		
+		/**
+		 * Finds and displays the highest bid
+		 */
 		public void loadHighBid(){
 			highBidPanel = new JPanel();
 			
@@ -218,22 +217,28 @@ public class ItemView {
 			if (theBids.size() > 0){
 				Bid highBid = theBids.get(theBids.size() - 1);
 				
+				//Add highest amount
 				String amountString = "$" + highBid.getAmount();
 				winningAmount = new JLabel(amountString);
 				winningAmount.setFont(winningAmount.getFont().deriveFont(26.0f));
 				highBidPanel.add(winningAmount, BorderLayout.WEST);
 				
+				//Add name of Bidder with highest amount
 				winningName = new JLabel(highBid.getBidder().getName());
 				winningName.setFont(winningAmount.getFont().deriveFont(26.0f));
 				highBidPanel.add(winningName, BorderLayout.CENTER);
 				
 			}
+			//Outline highest bid
 			Border matte = BorderFactory.createEtchedBorder(Color.GREEN, Color.WHITE);
 			highBidPanel.setBorder(matte);
 			this.add(highBidPanel, BorderLayout.NORTH);
 			
 		}
 		
+		/**
+		 * Load and display the other most recent bids
+		 */
 		public void loadRecentBids(){
 			historyPanel = new JPanel();
 			historyPanel.setLayout(new BoxLayout(historyPanel, BoxLayout.Y_AXIS));
@@ -244,10 +249,12 @@ public class ItemView {
 			while(i >= 0 && theBids.size() - 7 < i){
 				JPanel currentPanel = new JPanel();
 				Bid currentBid = theBids.get(i);
+				//Load bid amount
 				String amtString = "$" + currentBid.getAmount();
 				JLabel amount = new JLabel(amtString);
 				amount.setFont(amount.getFont().deriveFont(18.0f));
 				currentPanel.add(amount, BorderLayout.WEST);
+				//Load bidder's name
 				JLabel name = new JLabel(currentBid.getBidder().getName());
 				name.setFont(name.getFont().deriveFont(18.0f));
 				currentPanel.add(name, BorderLayout.CENTER);
@@ -260,121 +267,124 @@ public class ItemView {
 		}
 		
 		
-		
-		
-		
+
 	}
 	
+	/**
+	 * A JComponent class for storing and painting
+	 * the Item's picture. 
+	 * 
+	 * @author reagan
+	 *
+	 */
 	@SuppressWarnings("serial")
 	class ItemPictureComponent extends JComponent{
 		//TODO: Adjust these so they're relative to the user's screen
+		/** the width of the picture **/
 		private int width = 300;
+		
+		/** the height of the picture **/
 		private int height = 300;
+		
+		/** the image itself **/
 		private Image theImage;
 		
 		
+		/**
+		 * Creates an ItemPictureComponent from the given image
+		 * 
+		 * @param pic the image to be displayed
+		 */
 		public ItemPictureComponent(Image pic){
 			theImage = pic;
 		}
 		
+		/** 
+		 * Sets a new image for the item
+		 * @param newPic the new picture
+		 */
 		public void setImage(Image newPic){
 			theImage = newPic;
 		}
 		
+		/**
+		 * Draws the item image
+		 */
 		public void paintComponent(Graphics g){
-			int imageWidth = theImage.getWidth(this);
-			int imageHeight = theImage.getHeight(this);
+
 			
 			g.drawImage(theImage, 0, 0, width, height, null);
 			
 			
 		}
 		
+		/**
+		 * Gets the preferred size of the image
+		 * 
+		 * @return the preferred size
+		 */
 		public Dimension getPreferredSize() {
 			return new Dimension(width, height);
 		}
 	}
 	
+	/**
+	 * A JComponent class for storing and painting
+	 * the Donor's company logo. 
+	 * 
+	 * 
+	 * @author Reagan
+	 *
+	 */
 	@SuppressWarnings("serial")
 	class LogoPictureComponent extends JComponent{
-		private int width = 100;;
-		private int height = 100;;
+		/** the width of the logo **/
+		private int width = 100;
+		
+		/** the height of the logo **/
+		private int height = 100;
+		
+		/** the image of the logo **/
 		private Image theImage;
 		
 		
+		/**
+		 * Creates a logo JComponent from a given image
+		 * 
+		 * @param pic the logo image
+		 */
 		public LogoPictureComponent(Image pic){
 			theImage = pic;
 		}
 		
+		/**
+		 * Sets the logo image
+		 * 
+		 * @param newPic the new picture
+		 */
 		public void setImage(Image newPic){
 			theImage = newPic;
 		}
 		
+		/**
+		 * Draw the logo
+		 */
 		public void paintComponent(Graphics g){
-			int imageWidth = theImage.getWidth(this);
-			int imageHeight = theImage.getHeight(this);
 			
-			g.drawImage(theImage, 0, 0, 100, 100, null);
+			g.drawImage(theImage, 0, 0, width, height, null);
 			
 			
 		}
 		
+		/**
+		 * Gets the preferred size of the logo
+		 * 
+		 * @return the preferred size
+		 */
 		public Dimension getPreferredSize() {
 			return new Dimension(width, height);
 		}
 	}
-	
-	class ItemDetailsComponent extends JComponent{
-		
-		public static final int theX = 75;
-		public static final int theY = 100;
-		public static final int height = 300;
-		public static final int width = 200;
-		
-		public void paintComponent(Graphics g) {
-			g.drawString("Item title and other things", theX, theY);
-		}
-		
-		public Dimension getPreferredSize() {
-			return new Dimension(width, height);
-		}
-		
-	}
-	
-	class ItemFrame extends JFrame {
-		
-		private int width;
-		private int height;
-		
-		public ItemFrame() {
-			getDimensions();
-			setSize(width, height);
-			setTitle("Silent Auction");
-		}
-		
-		private void getDimensions(){
-			
-			Toolkit kit = Toolkit.getDefaultToolkit();
-			Dimension screenSize = kit.getScreenSize();
-			int screenWidth = screenSize.width;
-			int screenHeight = screenSize.height;
-			
-			//Set width & height as a proportion of screen width & height
-			width = (int) (screenWidth * .5);
-			height = (int) (screenHeight * .95);
-			
-			//Center jFrame on screen
-			setLocation((screenWidth / 2) - (width / 2), 0);
-			
-			
-			
-			
-		}
-	}
-	
 	
 
-	
-	
-	
 }
