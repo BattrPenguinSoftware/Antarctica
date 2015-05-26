@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
@@ -70,44 +71,62 @@ public class ItemView {
 		itemName.setFont(itemName.getFont().deriveFont(28.0f));
 		pane.add(itemName, nameConstraints);
 		
-		//add item number
-		GBC numberConstraints = new GBC(4, 1, 2, 1);
-		numberConstraints.setFill(GridBagConstraints.NONE);
-		numberConstraints.setWeight(0,0);
-		String numberString = "Item # " + theItem.getNumber();
-		itemNumber = new JLabel(numberString);
-		itemNumber.setFont(itemNumber.getFont().deriveFont(16.0f));
-		pane.add(itemNumber, numberConstraints);
 		
-		//add donor name
-		Donor theDonor = theItem.getDonor();
+		GBC itemDetailConstraints = new GBC(4, 1, 2, 3);
+		itemDetailConstraints.setFill(GridBagConstraints.VERTICAL);
+		itemDetailConstraints.setWeight(00,00);
+		itemDetailConstraints.setInsets(30);
+		JPanel itemDetails = createItemDetailPanel(theItem);
+		pane.add(itemDetails, itemDetailConstraints);
 		
-		GBC donorConstraints = new GBC(4, 2, 2, 1);
-		donorConstraints.setFill(GridBagConstraints.NONE);
-		donorConstraints.setWeight(0,0);
-		String donorString = "Donated by " + theDonor.getCompany();
-		donorName = new JLabel(donorString);
-		donorName.setFont(donorName.getFont().deriveFont(12.0f));
-		pane.add(donorName, donorConstraints);
-		
-		//add donor logo
-		GBC logoConstraints = new GBC(4, 3, 2, 2);
-		logoConstraints.setFill(GridBagConstraints.NONE);
-		logoConstraints.setWeight(0,0);
-		//logoConstraints.setInsets(2);
-		donorLogo = new LogoPictureComponent(theDonor.getLogo());
-		pane.add(donorLogo, logoConstraints);
 		//add bids
-		GBC bidConstraints = new GBC(1, 5, 4, 5);
-		bidConstraints.setFill(GridBagConstraints.VERTICAL);
+		GBC bidConstraints = new GBC(1, 6, 5, 5);
+		bidConstraints.setFill(GridBagConstraints.BOTH);
 		bidConstraints.setWeight(100,50);
 		//TODO: Adjust so it's based off screen size
-		bidConstraints.setInsets(5,150,10,0);
+		bidConstraints.setInsets(5,70,10,70);
 		bidHistoryPanel = new BidHistoryComponent(theItem.getBidHistory());
 		
 		pane.add(bidHistoryPanel, bidConstraints);
 	}
 	
+	private JPanel createItemDetailPanel(ItemModel theItem){
+		JPanel deets = new JPanel();
+		deets.setLayout(new GridLayout(3,1));
+		
+		//add item number
+		//BC numberConstraints = new GBC(4, 2, 2, 1);
+		//numberConstraints.setFill(GridBagConstraints.NONE);
+		//numberConstraints.setWeight(0,0);
+		String numberString = "Item # " + theItem.getNumber();
+		itemNumber = new JLabel(numberString);
+		itemNumber.setFont(itemNumber.getFont().deriveFont(20.0f));
+		deets.add(itemNumber);
+		//pane.add(itemNumber, numberConstraints);
+		
+		//add donor name
+		Donor theDonor = theItem.getDonor();
+		
+		//GBC donorConstraints = new GBC(4, 3, 2, 1);
+		//donorConstraints.setFill(GridBagConstraints.NONE);
+		//donorConstraints.setWeight(0,0);
+		String donorString = "Donated by " + theDonor.getCompany();
+		donorName = new JLabel(donorString);
+		donorName.setFont(donorName.getFont().deriveFont(18.0f));
+		//pane.add(donorName, donorConstraints);
+		deets.add(donorName);
+		
+		//add donor logo
+//				GBC logoConstraints = new GBC(4, 4, 2, 2);
+//			logoConstraints.setFill(GridBagConstraints.BOTH);
+//		logoConstraints.setWeight(0,0);
+		//logoConstraints.setInsets(2);
+		donorLogo = new LogoPictureComponent(theDonor.getLogo());
+	//	pane.add(donorLogo, logoConstraints);
+		deets.add(donorLogo);
+		
+		return deets;
+	}
 	
 	
 	private void createPane() {
@@ -117,11 +136,11 @@ public class ItemView {
 		pane = new JPanel(layout);
 		pane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 		//Add "Place a bid button" to view
-		GBC buttonConstraints = new GBC(1, 13, 4, 1);
+		GBC buttonConstraints = new GBC(0, 13, 6, 1);
 		//buttonConstraints.setInsets(1, 0, 0, 0);
 		buttonConstraints.setFill(GridBagConstraints.BOTH);
 		buttonConstraints.setWeight(100,10);
-		buttonConstraints.setInsets(0,150,0,0);
+		//buttonConstraints.setInsets(0,150,0,0);
 		JButton bidButton = new JButton("Place a Bid");
 		pane.add(bidButton, buttonConstraints);
 		
