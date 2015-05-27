@@ -2,8 +2,15 @@ package View;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 /**
  * A custom-sized JFrame object to hold
@@ -21,6 +28,8 @@ public class WindowFrame extends JFrame{
 	/** the height of the frame **/
 	private int height;
 	
+	private JFrame myFrame;
+	
 	/**
 	 * Constructs an ItemFrame object
 	 */
@@ -28,6 +37,45 @@ public class WindowFrame extends JFrame{
 		getDimensions();
 		setSize(width, height);
 		setTitle("Silent Auction");
+		
+		setJMenuBar(createMenuBar());
+	}
+	/*
+	 * Create JMenu Bar for frame
+	 */
+	private JMenuBar createMenuBar() {
+		final JMenuBar fileMenuBar = new JMenuBar();
+		
+		//setup file menubar
+		final JMenu fileMenu = new JMenu("File");
+		fileMenu.setMnemonic(KeyEvent.VK_F);
+		//exit
+		final JMenuItem exit = new JMenuItem("Exit");
+		exit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent theEvent) {
+				//Exit the Window Frame
+				
+			}
+			
+		});
+		
+		//donate item
+		final JMenuItem donate = new JMenuItem("Donate Item");
+		donate.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent donateEvent) {
+				// add donate event for donor
+				
+			}
+			
+		});
+		
+		fileMenu.add(exit);
+		fileMenu.add(donate);
+		fileMenuBar.add(fileMenu);
+		return fileMenuBar;
 	}
 	
 	/**
