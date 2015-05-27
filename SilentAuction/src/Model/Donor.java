@@ -1,12 +1,9 @@
 package Model;
 
 import java.awt.Image;
-import java.io.File;
 import java.util.ArrayList;
 
 public class Donor extends User {
-	
-	private static ItemModel item;
 
 	String company;
 	Image logo;
