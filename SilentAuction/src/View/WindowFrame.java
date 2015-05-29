@@ -20,6 +20,7 @@ import javax.swing.JMenuItem;
  * @author reagan
  *
  */
+@SuppressWarnings("serial")
 public class WindowFrame extends JFrame{
 
 	/** the width of the frame **/
@@ -28,7 +29,6 @@ public class WindowFrame extends JFrame{
 	/** the height of the frame **/
 	private int height;
 	
-	private JFrame myFrame;
 	
 	/**
 	 * Constructs an ItemFrame object
@@ -40,8 +40,11 @@ public class WindowFrame extends JFrame{
 		
 		setJMenuBar(createMenuBar());
 	}
+	
 	/*
 	 * Create JMenu Bar for frame
+	 * 
+	 * @author tuan
 	 */
 	private JMenuBar createMenuBar() {
 		final JMenuBar menuBar = new JMenuBar();
@@ -121,7 +124,7 @@ public class WindowFrame extends JFrame{
 		
 		//Set width & height as a proportion of screen width & height
 		width = (int) (screenWidth * .5);
-		height = (int) (screenHeight * .95);
+		height = (int) (screenHeight * .93);
 		
 		//Center jFrame on screen
 		setLocation((screenWidth / 2) - (width / 2), 0);

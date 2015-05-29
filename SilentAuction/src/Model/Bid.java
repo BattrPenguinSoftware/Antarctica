@@ -3,8 +3,7 @@ package Model;
  * bid objects created after each bidder places a bid 
  * @author Todd Robbins
  */
-@SuppressWarnings("hiding")
-public class Bid<ItemModel, Bidder> {
+public class Bid {
 	private double amount  = 0; 
 	private Bidder bidders; 
 	private ItemModel item; 

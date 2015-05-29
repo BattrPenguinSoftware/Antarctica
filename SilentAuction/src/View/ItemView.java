@@ -220,8 +220,8 @@ public class ItemView extends AbstractView{
 				Bid highBid = theBids.get(theBids.size() - 1);
 				
 				//Add highest amount
-				String amountString = "$" + highBid.getAmount();
-				winningAmount = new JLabel(amountString);
+				winningAmount = new JLabel();
+				winningAmount.setText(String.format("$%.2f", highBid.getAmount()));
 				winningAmount.setFont(winningAmount.getFont().deriveFont(26.0f));
 				highBidPanel.add(winningAmount, BorderLayout.WEST);
 				
@@ -252,8 +252,8 @@ public class ItemView extends AbstractView{
 				JPanel currentPanel = new JPanel();
 				Bid currentBid = theBids.get(i);
 				//Load bid amount
-				String amtString = "$" + currentBid.getAmount();
-				JLabel amount = new JLabel(amtString);
+				JLabel amount = new JLabel();
+				amount.setText(String.format("$%.2f", currentBid.getAmount()));
 				amount.setFont(amount.getFont().deriveFont(18.0f));
 				currentPanel.add(amount, BorderLayout.WEST);
 				//Load bidder's name

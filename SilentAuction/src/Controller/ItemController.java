@@ -4,21 +4,23 @@ import java.util.ArrayList;
 
 import Model.Auction;
 import Model.Bid;
+import Model.Bidder;
 import Model.ItemModel;
 import View.AbstractView;
+import View.ConfirmBidView;
 import View.ItemView;
 import View.PlaceBidView;
 
-
-/** The controller handles user input events like mouse clicks and keystrokes **/
+/**
+ * The controller handles user input events like mouse clicks and keystrokes
+ * 
+ * @author reagan
+ */
 public class ItemController {
 	
 	ArrayList<ItemModel> allItems;
 	ItemModel currentItem;
-	//AbstractView currentView;
-	ItemView iView;
-	PlaceBidView pView;
-	
+	AbstractView currentView;
 	
 	public ItemController(Auction theAuction) {
 		allItems = theAuction.getItems();
@@ -30,41 +32,52 @@ public class ItemController {
 					+ "does not have any items in it");
 		}
 		
-		iView = new ItemView(this, currentItem);
-		pView = null;
+		launchItemView();
+
 	}
 	
 	
 	public void placeBid() {
-		iView.close();
-		pView = new PlaceBidView(currentItem.getMaxBid().getAmount(), this);
-		
-		
-		
+		currentView.close();
+		currentView = new PlaceBidView(currentItem.getMaxBid().getAmount(), this);
+
 	}
 	
-	//TODO: Change to use the ItemModel's verifyBid method
 	public void verifyBid(Double newAmount){
-		Boolean valid = newAmount > currentItem.getMaxBid().getAmount();
 		
-		if (valid){
+		if (currentItem.verifyNewBid(newAmount)){
 			confirmBid(newAmount);
-		} else {
-			
-			pView.bidHigher(newAmount);
+		} else {	
+			((PlaceBidView) currentView).bidHigher(newAmount);
 		}
 	}
 	
 	public void confirmBid(Double newAmount) {
-		pView.close();
-		//currentView = new ConfirmBidView(newAmount);
+		
+		Bidder theBidder = ((PlaceBidView) currentView).getBidder();
+		currentView.close();
+		currentView = new ConfirmBidView(new Bid(newAmount, theBidder, currentItem), this);
 	}
 
 
 	public void cancelBid() {
-		pView.close();
-		iView = new ItemView(this, currentItem);
+		currentView.close();
+		launchItemView();
 		
+	}
+	
+	public void placeBidAndRefreshView(Bid theBid){
+		currentItem.placeNewBid(theBid);
+		currentView.close();
+		launchItemView();
+		
+	}
+	
+	private void launchItemView(){
+		if (currentView != null){
+			currentView.close();
+		}
+		currentView = new ItemView(this, currentItem);
 	}
 	
 	
