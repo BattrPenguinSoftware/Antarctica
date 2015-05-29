@@ -55,7 +55,7 @@ public class WindowFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent theEvent) {
 				//Exit the Window Frame
-				
+				System.exit(0);
 			}
 			
 		});
@@ -72,8 +72,9 @@ public class WindowFrame extends JFrame{
 			
 		});
 		
-		fileMenu.add(exit);
 		fileMenu.add(donate);
+		fileMenu.add(exit);
+		
 		fileMenuBar.add(fileMenu);
 		return fileMenuBar;
 	}

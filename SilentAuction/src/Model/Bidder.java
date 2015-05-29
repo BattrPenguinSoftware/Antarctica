@@ -8,7 +8,6 @@ public class Bidder extends User{
 	
 	public Bidder(String name, String phoneNumber, String email, String QRCode) {
 		super(name, phoneNumber, email, QRCode);
-		// TODO Auto-generated constructor stub
 	}
 
 	//create arraylist to hold bidding history
