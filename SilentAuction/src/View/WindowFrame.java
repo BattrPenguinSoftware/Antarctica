@@ -44,7 +44,7 @@ public class WindowFrame extends JFrame{
 	 * Create JMenu Bar for frame
 	 */
 	private JMenuBar createMenuBar() {
-		final JMenuBar fileMenuBar = new JMenuBar();
+		final JMenuBar menuBar = new JMenuBar();
 		
 		//setup file menubar
 		final JMenu fileMenu = new JMenu("File");
@@ -71,12 +71,42 @@ public class WindowFrame extends JFrame{
 			}
 			
 		});
+		//set up history 
+		final JMenu historyMenu = new JMenu("History");
+		historyMenu.setMnemonic(KeyEvent.VK_H);
+		
+		final JMenuItem donorHistory = new JMenuItem("Donor History");
+		final JMenuItem bidderHistory = new JMenuItem("Bidder History");
+		
+		donorHistory.addActionListener(new ActionListener() {
+			//showing history of donor actions
+			@Override
+			public void actionPerformed(ActionEvent theEvent) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		bidderHistory.addActionListener(new ActionListener() {
+			//showing history of bidder
+			@Override
+			public void actionPerformed(ActionEvent theEvent) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		fileMenu.add(donate);
 		fileMenu.add(exit);
+		historyMenu.add(donorHistory);
+		historyMenu.add(bidderHistory);
 		
-		fileMenuBar.add(fileMenu);
-		return fileMenuBar;
+		menuBar.add(fileMenu);
+		
+		menuBar.add(historyMenu);
+		return menuBar;
 	}
 	
 	/**
