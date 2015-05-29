@@ -16,7 +16,6 @@ public class BidTest {
 	 */
 	@Test
 	public void testBid() {
-		
 		fail("Not yet implemented");
 	}
 
