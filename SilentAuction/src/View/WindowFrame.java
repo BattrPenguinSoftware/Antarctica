@@ -79,6 +79,7 @@ public class WindowFrame extends JFrame{
 		
 		final JMenuItem donorHistory = new JMenuItem("Donor History");
 		final JMenuItem bidderHistory = new JMenuItem("Bidder History");
+		final JMenuItem auctioneerHistory = new JMenuItem("Auctioneer History");
 		
 		donorHistory.addActionListener(new ActionListener() {
 			//showing history of donor actions
@@ -100,13 +101,24 @@ public class WindowFrame extends JFrame{
 			
 		});
 		
+		auctioneerHistory.addActionListener(new ActionListener() {
+			//showing history of auctioneer
+			//merge 2 Jpanels of donor and bidder into 1
+			@Override
+			public void actionPerformed(ActionEvent theEvent) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 		fileMenu.add(donate);
 		fileMenu.add(exit);
 		historyMenu.add(donorHistory);
 		historyMenu.add(bidderHistory);
+		historyMenu.add(auctioneerHistory);
 		
 		menuBar.add(fileMenu);
-		
 		menuBar.add(historyMenu);
 		return menuBar;
 	}
