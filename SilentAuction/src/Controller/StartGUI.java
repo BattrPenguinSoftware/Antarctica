@@ -3,10 +3,21 @@ package Controller;
 import java.awt.EventQueue;
 
 import Model.Auction;
-import View.ItemView;
 
+/**
+ * 
+ * A class to launch the GUI.
+ * 
+ * @author reagan
+ *
+ */
 public class StartGUI {
 	
+	/**
+	 * The main method which launches the GUI.
+	 *
+	 * @param args optional command line arguments
+	 */
 	public static void main (String[] args) {
 		
 		//create Auction with Items and Bidders, etc.
@@ -24,7 +35,11 @@ public class StartGUI {
 		
 	}
 	
-	//TODO: populate auction with items
+	/**
+	 * Creates the auction.
+	 *
+	 * @return the auction
+	 */
 	private static Auction createAuction() {
 		
 		Auction result = new Auction();

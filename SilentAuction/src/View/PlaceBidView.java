@@ -10,7 +10,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 
@@ -18,23 +17,43 @@ import Controller.ItemController;
 import Model.Bidder;
 
 /**
- * 
- * 
- * @author reagan
+ * The view that allows a user to place
+ * a bid.
  *
+ * @author reagan
  */
 public class PlaceBidView extends AbstractView{
 	
+	/** The size of the instruction text. */
 	public static final float INSTRUCTION_FONT = 30.0f;
-	public static final float PRICE_FONT = 26.0f;
-	public static final float BUTTON_FONT = 30.0f;
 	
+	/** The size of the price text. */
+	public static final float PRICE_FONT = 26.0f;
+	
+	/** The size of the button text. */
+	public static final float BUTTON_FONT = 23.0f;
+	
+	/** The frame that holds the JPanel and all its components. */
 	private WindowFrame frame;
+	
+	/** The JPanel that holds all the components. */
 	private JPanel pane;
+	
+	/** The current bid amount. */
 	double currentBidAmount;
+	
+	/** The item controller that controls the flow. */
 	ItemController iController;
+	
+	/** The bidder. */
 	Bidder theBidder;
 	
+	/**
+	 * Instantiates a new place bid view.
+	 *
+	 * @param currentBidAmount the current bid amount
+	 * @param iController the item controller
+	 */
 	public PlaceBidView(double currentBidAmount, ItemController iController){
 		super();
 		this.currentBidAmount = currentBidAmount;
@@ -46,6 +65,11 @@ public class PlaceBidView extends AbstractView{
 		
 	}
 	
+	/**
+	 * Initializes the pane.
+	 *
+	 * @return the JPanel
+	 */
 	private JPanel initializePane(){
 		
 		JPanel result = new JPanel(new GridLayout(7, 0));
@@ -63,6 +87,7 @@ public class PlaceBidView extends AbstractView{
 		JLabel cameraText = new JLabel("video from camera feed will go here");
 		cameraPanel.add(cameraText);
 		result.add(cameraPanel);
+
 		//Add current high bid amount
 		JLabel highBid = new JLabel();
 		highBid.setText(String.format("Current High Bid: $%.2f", currentBidAmount));
@@ -110,11 +135,23 @@ public class PlaceBidView extends AbstractView{
 		
 	}
 	
+	/**
+	 * Gets the bidder.
+	 *
+	 * @return the bidder
+	 */
 	public Bidder getBidder() {
 		return theBidder;
 	}
 	
-	public void bidHigher(Double newAmount) {
+	/**
+	 * Displays an error letting the user
+	 * know to pick a larger amount.
+	 *
+	 * @param attemptedAmount the attempted amount
+	 */
+	//TODO: Make this work
+	public void bidHigher(Double attemptedAmount) {
 		JLabel warning = new JLabel("You must bid more than the current high bid.");
 		pane.add(warning);
 		

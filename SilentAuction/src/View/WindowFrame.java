@@ -17,7 +17,7 @@ import javax.swing.JMenuItem;
  * components in the various Silent Auction
  * views.
  * 
- * @author reagan
+ * @author reagan and tuan
  *
  */
 @SuppressWarnings("serial")
@@ -41,7 +41,7 @@ public class WindowFrame extends JFrame{
 		setJMenuBar(createMenuBar());
 	}
 	
-	/*
+	/**
 	 * Create JMenu Bar for frame
 	 * 
 	 * @author tuan

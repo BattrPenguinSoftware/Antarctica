@@ -20,35 +20,55 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import Controller.ItemController;
 import Model.Bid;
 import Model.Donor;
 import Model.ItemModel;
-import Model.Bidder;
 import Model.User;
-import Controller.ItemController;
 
 /**
- * Displays an Item and its details
+ * Displays an Item's details and gives
+ * the user an option to place a bid.
  * 
  * @author reagan
  *
  */
 public class ItemView extends AbstractView{
 	
+	/** The frame that holds the JPanel that holds all visible components. */
 	private WindowFrame frame;
+	
+	/** The JPanel that sits on the frame. */
 	private JPanel pane;
+	
+	/** The item's picture. */
 	private ItemPictureComponent itemPic;
+	
+	/** The item's name. */
 	private JLabel itemName;
+	
+	/** The item's number. */
 	private JLabel itemNumber;
+	
+	/** The donor's name. */
 	private JLabel donorName;
+	
+	/** The donor's logo. */
 	private LogoPictureComponent donorLogo;
+	
+	/** The bid history panel. */
 	private JPanel bidHistoryPanel;
+	
+	/** The item controller that handles the logic. */
 	private ItemController iController;
 	
 	
-	/** 
+	/**
+	 *  
 	 * Creates an ItemView object and initializes
-	 * it to display the given item
+	 * it to display the given item.
+	 *
+	 * @param iController the i controller
 	 * @param firstItem the item to initially display
 	 */
 	public ItemView(ItemController iController, ItemModel firstItem) {
@@ -108,8 +128,8 @@ public class ItemView extends AbstractView{
 
 	/**
 	 * Helper method that's in charge of creating the JPanel
-	 * for the item# and donor info
-	 * 
+	 * for the item# and donor info.
+	 *
 	 * @param theItem the item whose details are being displayed
 	 * @return the JPanel containing this info
 	 */
@@ -140,7 +160,7 @@ public class ItemView extends AbstractView{
 	
 	
 	/**
-	 * Creates the JPanel that will hold all the components being displayed
+	 * Creates the JPanel that will hold all the components being displayed.
 	 */
 	private void createPane() {
 		
@@ -157,7 +177,7 @@ public class ItemView extends AbstractView{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				iController.placeBid();
+				iController.launchPlaceBidView();
 				
 			}
 			
@@ -171,31 +191,31 @@ public class ItemView extends AbstractView{
 	/**
 	 * A JPanel to display the item's
 	 * bid history, including current
-	 * high bidder
-	 * 
-	 * @author reagan
+	 * high bidder.
 	 *
+	 * @author reagan
 	 */
 	@SuppressWarnings("serial")
 	class BidHistoryComponent extends JPanel{
 		
-		/** The entire bid history **/
+		/**  The entire bid history *. */
 		ArrayList<Bid> theBids;
 		
-		/** a JPanel to hold the highest bid **/
+		/**  a JPanel to hold the highest bid *. */
 		JPanel highBidPanel;
 		
-		/** a JLabel to hold the highest amount **/
+		/**  a JLabel to hold the highest amount *. */
 		JLabel winningAmount;
 		
-		/** a JLabel to hold the name of the highest bidder **/
+		/**  a JLabel to hold the name of the highest bidder *. */
 		JLabel winningName;
 		
-		/** a JPanel to display the recent bid history**/
+		/**  a JPanel to display the recent bid history*. */
 		JPanel historyPanel;
 		
 		/**
-		 * Creates a BidHistoryComponent object from the given bid history
+		 * Creates a BidHistoryComponent object from the given bid history.
+		 *
 		 * @param theBids the bid history
 		 */
 		public BidHistoryComponent(ArrayList<Bid> theBids) {
@@ -210,7 +230,7 @@ public class ItemView extends AbstractView{
 		}
 		
 		/**
-		 * Finds and displays the highest bid
+		 * Finds and displays the highest bid.
 		 */
 		public void loadHighBid(){
 			highBidPanel = new JPanel();
@@ -239,7 +259,7 @@ public class ItemView extends AbstractView{
 		}
 		
 		/**
-		 * Load and display the other most recent bids
+		 * Load and display the other most recent bids.
 		 */
 		public void loadRecentBids(){
 			historyPanel = new JPanel();
@@ -282,27 +302,29 @@ public class ItemView extends AbstractView{
 	@SuppressWarnings("serial")
 	class ItemPictureComponent extends JComponent{
 		//TODO: Adjust these so they're relative to the user's screen
-		/** the width of the picture **/
+		/**  the width of the picture *. */
 		private int width = 300;
 		
-		/** the height of the picture **/
+		/**  the height of the picture *. */
 		private int height = 300;
 		
-		/** the image itself **/
+		/**  the image itself *. */
 		private Image theImage;
 		
 		
 		/**
-		 * Creates an ItemPictureComponent from the given image
-		 * 
+		 * Creates an ItemPictureComponent from the given image.
+		 *
 		 * @param pic the image to be displayed
 		 */
 		public ItemPictureComponent(Image pic){
 			theImage = pic;
 		}
 		
-		/** 
-		 * Sets a new image for the item
+		/**
+		 *  
+		 * Sets a new image for the item.
+		 *
 		 * @param newPic the new picture
 		 */
 		public void setImage(Image newPic){
@@ -310,7 +332,9 @@ public class ItemView extends AbstractView{
 		}
 		
 		/**
-		 * Draws the item image
+		 * Draws the item image.
+		 *
+		 * @param g the g
 		 */
 		public void paintComponent(Graphics g){
 
@@ -321,8 +345,8 @@ public class ItemView extends AbstractView{
 		}
 		
 		/**
-		 * Gets the preferred size of the image
-		 * 
+		 * Gets the preferred size of the image.
+		 *
 		 * @return the preferred size
 		 */
 		public Dimension getPreferredSize() {
@@ -340,19 +364,20 @@ public class ItemView extends AbstractView{
 	 */
 	@SuppressWarnings("serial")
 	class LogoPictureComponent extends JComponent{
-		/** the width of the logo **/
+		
+		/**  the width of the logo *. */
 		private int width = 100;
 		
-		/** the height of the logo **/
+		/**  the height of the logo *. */
 		private int height = 100;
 		
-		/** the image of the logo **/
+		/**  the image of the logo *. */
 		private Image theImage;
 		
 		
 		/**
-		 * Creates a logo JComponent from a given image
-		 * 
+		 * Creates a logo JComponent from a given image.
+		 *
 		 * @param pic the logo image
 		 */
 		public LogoPictureComponent(Image pic){
@@ -360,8 +385,8 @@ public class ItemView extends AbstractView{
 		}
 		
 		/**
-		 * Sets the logo image
-		 * 
+		 * Sets the logo image.
+		 *
 		 * @param newPic the new picture
 		 */
 		public void setImage(Image newPic){
@@ -369,7 +394,9 @@ public class ItemView extends AbstractView{
 		}
 		
 		/**
-		 * Draw the logo
+		 * Draw the logo.
+		 *
+		 * @param g the g
 		 */
 		public void paintComponent(Graphics g){
 			
@@ -379,8 +406,8 @@ public class ItemView extends AbstractView{
 		}
 		
 		/**
-		 * Gets the preferred size of the logo
-		 * 
+		 * Gets the preferred size of the logo.
+		 *
 		 * @return the preferred size
 		 */
 		public Dimension getPreferredSize() {
