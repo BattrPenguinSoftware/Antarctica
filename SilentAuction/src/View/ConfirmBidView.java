@@ -121,7 +121,7 @@ public class ConfirmBidView extends AbstractView{
 			public void actionPerformed(ActionEvent arg0) {
 				//If the user clicks no, go back to the item
 				//view
-				iController.cancelBid();
+				iController.launchPlaceBidView();
 				
 			}
 			

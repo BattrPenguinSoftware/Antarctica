@@ -90,7 +90,7 @@ public class ItemController {
 	 */
 	public void cancelBid() {
 		currentView.close();
-		currentView = new PlaceBidView(currentItem.getMaxBid().getAmount(), this);
+		launchItemView();
 		
 	}
 	
