@@ -64,7 +64,7 @@ public class PlaceBidView extends AbstractView{
 		frame = super.getFrame();
 		pane = initializePane();
 		//TODO: correct this so theBidder starts as null and updates at login	
-		theBidder = new Bidder("Mary Lou Haggens", "206-673-2343", "mlhay@gmail.com", 23, "4567");
+		theBidder = new Bidder("Mary Lou Haggens", "206-673-2343", "mlhay@gmail.com", 17, "4567");
 		frame.add(pane);
 		
 	}

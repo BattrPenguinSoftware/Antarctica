@@ -33,7 +33,7 @@ public class Auction {
 			ItemModel defaultItem = new ItemModel("Cheetarah Vinyl Figure", 
 					new Donor("Ada Larson", 
 					"206-534-6789", "alarson@gmail.com", 24, "1004", logo, "POP Vinyl"),
-					200, itemImage, 12.00);
+					200, itemImage, 12.00, false);
 			//Giving the auction item a bid history
 			defaultItem.placeNewBid(new Bid(13.00, 
 					new Bidder("Marilyn Oberlander", "206-564-6789", "mO75@gmail.com", 30, "1005"), 
