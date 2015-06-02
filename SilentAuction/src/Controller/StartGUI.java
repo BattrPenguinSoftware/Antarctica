@@ -1,3 +1,6 @@
+//have installed OpenCV 2.4.9 under your C:\, and in runConfigurations under VMArguments put: -Djava.library.path="C:\opencv\build\java\x64" 
+
+
 package Controller;
 
 import java.awt.EventQueue;
