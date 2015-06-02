@@ -102,8 +102,6 @@ public class PlaceBidView extends AbstractView{
 		//Add error label as a space holder (for use when bid is too low)
 		errorLabel = new JLabel();
 		errorLabel.setVisible(false);
-		errorLabel.setText(String.format("<html>Your bid is too low.<br>It must be higher than the" 
-		+ "<br>current bid amount of $%.2f</html>", currentBidAmount));
 		errorLabel.setFont(errorLabel.getFont().deriveFont(PRICE_FONT));
 		errorLabel.setForeground(Color.RED);
 		result.add(errorLabel);
@@ -123,7 +121,20 @@ public class PlaceBidView extends AbstractView{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				iController.verifyBid(new Double(newBidAmount.getText()));
+		
+				Double newAmount = new Double(newBidAmount.getText());
+				
+				//Don't allow bidders under 18 to bid $50 or more
+				if (theBidder.getAge() < 18 && newAmount >= new Double(50)) {
+					errorLabel.setText("<html>Bidders under 18 must<br>bid under $50</html>");
+					errorLabel.setVisible(true);
+				//Don't allow bidders under 21 to buy alcoholic items	
+				} else if (theBidder.getAge() < 21 && iController.isAlcoholic()){
+					errorLabel.setText("<html>Bidders under 21 may<br>not bid on alcoholic items</html>");
+					errorLabel.setVisible(true);
+				} else {
+					iController.verifyBid(newAmount);
+				}
 				
 			}
 			
@@ -166,7 +177,9 @@ public class PlaceBidView extends AbstractView{
 	 */
 	//TODO: Make this work
 	public void bidHigher(Double attemptedAmount) {
-		pane.add(errorLabel);
+		errorLabel.setText(String.format("<html>Your bid is too low.<br>It must be higher than the" 
+				+ "<br>current bid amount of $%.2f</html>", currentBidAmount));
+		
 		errorLabel.setVisible(true);
 		
 	}
