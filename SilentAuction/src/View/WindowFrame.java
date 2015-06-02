@@ -10,6 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+
+import Model.Bidder;
 
 /**
  * A custom-sized JFrame object to hold
@@ -27,8 +30,7 @@ public class WindowFrame extends JFrame{
 	
 	/** the height of the frame **/
 	private int height;
-	
-	
+
 	/**
 	 * Constructs an ItemFrame object
 	 */
@@ -122,7 +124,7 @@ public class WindowFrame extends JFrame{
 		menuBar.add(historyMenu);
 		return menuBar;
 	}
-	
+
 	/**
 	 * Get custom dimensions based on the size of the user's screen
 	 */
