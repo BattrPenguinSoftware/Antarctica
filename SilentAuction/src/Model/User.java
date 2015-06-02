@@ -4,6 +4,15 @@ public abstract class User {
 	String name;
 	String phoneNumber;
 	String email;
+	int age;
+	
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
 	//QR qrCode;
 	String QRCode;
 		
@@ -39,11 +48,12 @@ public abstract class User {
 	public void setQRCode(String qRCode) {
 		QRCode = qRCode;
 	}
-
-	public User(String name, String phoneNumber, String email, String QRCode) {
+	
+	public User(String name, String phoneNumber, String email, int age, String QRCode) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
+		this.age = age;
 		this.QRCode = QRCode;
 	}
 }
