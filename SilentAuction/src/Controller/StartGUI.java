@@ -28,12 +28,11 @@ public class StartGUI {
 		
 		EventQueue.invokeLater(new Runnable(){
 			
+			@SuppressWarnings("unused")
 			public void run() {
 				
 				ItemController iControl = new ItemController(theAuction);
-				
-			}
-			
+			}	
 		});
 		
 	}
