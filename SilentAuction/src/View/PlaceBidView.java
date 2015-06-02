@@ -60,7 +60,8 @@ public class PlaceBidView extends AbstractView{
 		this.iController = iController;
 		frame = super.getFrame();
 		pane = initializePane();
-		theBidder = null;
+		//TODO: correct this so theBidder starts as null and updates at login	
+		theBidder = new Bidder("Mary Lou Haggens", "206-673-2343", "mlhay@gmail.com", "4567");
 		frame.add(pane);
 		
 	}
@@ -141,6 +142,7 @@ public class PlaceBidView extends AbstractView{
 	 * @return the bidder
 	 */
 	public Bidder getBidder() {
+		
 		return theBidder;
 	}
 	
