@@ -111,7 +111,7 @@ public class ConfirmBidView extends AbstractView{
 			
 		});
 		
-		JButton noButton = new JButton("No, Cancel This Bid");
+		JButton noButton = new JButton("No, Go Back");
 		noButton.setForeground(Color.RED);
 		noButton.setFont(noButton.getFont().deriveFont(BUTTON_FONT));
 		
