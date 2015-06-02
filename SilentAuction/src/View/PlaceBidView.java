@@ -42,6 +42,9 @@ public class PlaceBidView extends AbstractView{
 	/** The current bid amount. */
 	double currentBidAmount;
 	
+	/** A label to let the user know there's a problem. */
+	private JLabel errorLabel;
+	
 	/** The item controller that controls the flow. */
 	ItemController iController;
 	
@@ -95,6 +98,15 @@ public class PlaceBidView extends AbstractView{
 		highBid.setFont(highBid.getFont().deriveFont(PRICE_FONT));
 		highBid.setForeground(Color.MAGENTA);
 		result.add(highBid);
+		
+		//Add error label as a space holder (for use when bid is too low)
+		errorLabel = new JLabel();
+		errorLabel.setVisible(false);
+		errorLabel.setText(String.format("<html>Your bid is too low.<br>It must be higher than the" 
+		+ "<br>current bid amount of $%.2f</html>", currentBidAmount));
+		errorLabel.setFont(errorLabel.getFont().deriveFont(PRICE_FONT));
+		errorLabel.setForeground(Color.RED);
+		result.add(errorLabel);
 		
 		//Let user enter new bid
 		//TODO: Recreate with fancy scrolling numbers
@@ -154,8 +166,8 @@ public class PlaceBidView extends AbstractView{
 	 */
 	//TODO: Make this work
 	public void bidHigher(Double attemptedAmount) {
-		JLabel warning = new JLabel("You must bid more than the current high bid.");
-		pane.add(warning);
+		pane.add(errorLabel);
+		errorLabel.setVisible(true);
 		
 	}
 	
