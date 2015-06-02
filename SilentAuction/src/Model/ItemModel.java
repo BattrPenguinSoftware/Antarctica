@@ -28,6 +28,8 @@ public class ItemModel {
 
 	/** The current bid. */
 	private double currentBid;
+	
+	private boolean isAlcoholic;
 
 	/**
 	 * Constructor for the item.
@@ -39,14 +41,19 @@ public class ItemModel {
 	 * @param initialPrice the initial price
 	 */
 	public ItemModel(String theName, Donor theDonor, int theItemNumber,
-			Image theImage, double initialPrice) {
+			Image theImage, double initialPrice, boolean isItADrink) {
 		name = theName;
 		donor = theDonor;
 		bidHistory = new ArrayList<Bid>();
 		itemNumber = theItemNumber;
 		image = theImage;
 		currentBid = initialPrice;
+		isAlcoholic = isItADrink;
 
+	}
+	
+	public boolean isAlcoholic(){
+		return isAlcoholic;
 	}
 
 	/**
