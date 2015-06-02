@@ -1,19 +1,25 @@
 package Model;
 
 import java.awt.Image;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+/**
+ * Represents an auction and holds all the items
+ * available for bid.
+ * 
+ * 
+ * @author reagan
+ *
+ */
 public class Auction {
 	
+	/** The items. */
 	ArrayList<ItemModel> items;
 	
 	/**
-	 * Create a new Auction object with an empty list of items
+	 * Create a new Auction object with an empty list of items.
 	 */
 	public Auction() {
 		items = new ArrayList<ItemModel>();
@@ -28,6 +34,7 @@ public class Auction {
 					new Donor("Ada Larson", 
 					"206-534-6789", "alarson@gmail.com", "1004", logo, "POP Vinyl"),
 					200, itemImage, 12.00);
+			//Giving the auction item a bid history
 			defaultItem.placeNewBid(new Bid(13.00, 
 					new Bidder("Marilyn Oberlander", "206-564-6789", "mO75@gmail.com", "1005"), 
 					defaultItem));
@@ -52,7 +59,8 @@ public class Auction {
 	}
 	
 	/**
-	 * Add an item to the auction
+	 * Add an item to the auction.
+	 *
 	 * @param newItem the item to add
 	 */
 	public void addItem(ItemModel newItem){
@@ -60,7 +68,8 @@ public class Auction {
 	}
 	
 	/**
-	 * Return the list of all items in the auction
+	 * Return the list of all items in the auction.
+	 *
 	 * @return the list of items
 	 */
 	public ArrayList<ItemModel> getItems() {

@@ -10,6 +10,7 @@ import java.awt.Insets;
  * @author Reagan Middlebrook (a few tiny changes marked at their methods)
  *
  */
+@SuppressWarnings("serial")
 public class GBC extends GridBagConstraints{
 	/**
 	 * Constructs a GBC with given gridx and gridy and all other

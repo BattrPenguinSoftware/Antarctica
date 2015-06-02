@@ -2,13 +2,24 @@ package View;
 
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
+/**
+ * An abstract class to create the frame
+ * for all of our views.
+ * 
+ * 
+ * @author reagan
+ *
+ */
 public abstract class AbstractView {
 	
+	/** The frame. */
 	private WindowFrame frame;
 	
 	
+	/**
+	 * Instantiates a new abstract view.
+	 */
 	public AbstractView(){
 		createFrame();
 	}
@@ -25,13 +36,18 @@ public abstract class AbstractView {
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * Gets the frame.
+	 *
+	 * @return the frame
+	 */
 	public WindowFrame getFrame() {
 		return frame;
 	}
 	
 	
 	/**
-	 * Closes the current view
+	 * Closes the current view.
 	 */
 	public void close(){
 		frame.dispose();

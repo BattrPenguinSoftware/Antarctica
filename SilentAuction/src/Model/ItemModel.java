@@ -56,7 +56,7 @@ public class ItemModel {
 	 * @param newBid the new bid
 	 * @return true, if successful
 	 */
-	private boolean verifyNewBid(double newBid) {
+	public boolean verifyNewBid(double newBid) {
 		return newBid > currentBid;
 	}
 

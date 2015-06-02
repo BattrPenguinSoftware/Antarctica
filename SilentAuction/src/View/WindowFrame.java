@@ -5,7 +5,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -17,9 +16,10 @@ import javax.swing.JMenuItem;
  * components in the various Silent Auction
  * views.
  * 
- * @author reagan
+ * @author reagan and tuan
  *
  */
+@SuppressWarnings("serial")
 public class WindowFrame extends JFrame{
 
 	/** the width of the frame **/
@@ -28,7 +28,6 @@ public class WindowFrame extends JFrame{
 	/** the height of the frame **/
 	private int height;
 	
-	private JFrame myFrame;
 	
 	/**
 	 * Constructs an ItemFrame object
@@ -40,8 +39,11 @@ public class WindowFrame extends JFrame{
 		
 		setJMenuBar(createMenuBar());
 	}
-	/*
+	
+	/**
 	 * Create JMenu Bar for frame
+	 * 
+	 * @author tuan
 	 */
 	private JMenuBar createMenuBar() {
 		final JMenuBar menuBar = new JMenuBar();
@@ -77,6 +79,7 @@ public class WindowFrame extends JFrame{
 		
 		final JMenuItem donorHistory = new JMenuItem("Donor History");
 		final JMenuItem bidderHistory = new JMenuItem("Bidder History");
+		final JMenuItem auctioneerHistory = new JMenuItem("Auctioneer History");
 		
 		donorHistory.addActionListener(new ActionListener() {
 			//showing history of donor actions
@@ -98,13 +101,24 @@ public class WindowFrame extends JFrame{
 			
 		});
 		
+		auctioneerHistory.addActionListener(new ActionListener() {
+			//showing history of auctioneer
+			//merge 2 Jpanels of donor and bidder into 1
+			@Override
+			public void actionPerformed(ActionEvent theEvent) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 		fileMenu.add(donate);
 		fileMenu.add(exit);
 		historyMenu.add(donorHistory);
 		historyMenu.add(bidderHistory);
+		historyMenu.add(auctioneerHistory);
 		
 		menuBar.add(fileMenu);
-		
 		menuBar.add(historyMenu);
 		return menuBar;
 	}
@@ -121,7 +135,7 @@ public class WindowFrame extends JFrame{
 		
 		//Set width & height as a proportion of screen width & height
 		width = (int) (screenWidth * .5);
-		height = (int) (screenHeight * .95);
+		height = (int) (screenHeight * .93);
 		
 		//Center jFrame on screen
 		setLocation((screenWidth / 2) - (width / 2), 0);
