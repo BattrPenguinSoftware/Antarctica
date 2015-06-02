@@ -71,6 +71,10 @@ public class ItemController {
 		}
 	}
 	
+	public boolean isAlcoholic(){
+		return currentItem.isAlcoholic();
+	}
+	
 	/**
 	 * Launches the view that lets a user confirm their bid or cancel it.
 	 *

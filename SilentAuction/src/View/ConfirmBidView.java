@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 import Controller.ItemController;
 import Model.Bid;
+import Model.Bidder;
 import Model.User;
 
 /**

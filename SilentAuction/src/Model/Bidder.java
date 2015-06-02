@@ -6,10 +6,11 @@ import java.util.ArrayList;
  */
 public class Bidder extends User{
 	
-	public Bidder(String name, String phoneNumber, String email, String QRCode) {
-		super(name, phoneNumber, email, QRCode);
+	public Bidder(String name, String phoneNumber, String email, int age, String QRCode) {
+		super(name, phoneNumber, email, age, QRCode);
 	}
-
+	
+	
 	//create arraylist to hold bidding history
 	ArrayList<Bid> bidHistory = new ArrayList<Bid>();
 	
