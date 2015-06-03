@@ -31,7 +31,7 @@ import Model.User;
  * the user an option to place a bid.
  * 
  * @author reagan
- *
+ * @date 6/2/15
  */
 public class ItemView extends AbstractView{
 	

@@ -9,7 +9,7 @@ import javax.swing.JFrame;
  * 
  * 
  * @author reagan
- *
+ * @date 6/2/15
  */
 public abstract class AbstractView {
 	

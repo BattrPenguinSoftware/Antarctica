@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  * 
  * 
  * @author reagan
- *
+ * @date 6/2/15
  */
 public class Auction {
 	

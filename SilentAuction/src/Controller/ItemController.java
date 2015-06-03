@@ -15,6 +15,7 @@ import View.PlaceBidView;
  * The controller handles user input events like mouse clicks and keystrokes.
  *
  * @author reagan
+ * @date 6/2/15
  */
 public class ItemController {
 	
@@ -112,7 +113,8 @@ public class ItemController {
 	}
 	
 	/**
-	 * Launch the basic item view.
+	 * Launch the basic item view, displaying
+	 * the currentItem.
 	 */
 	private void launchItemView(){
 		if (currentView != null){
@@ -120,7 +122,6 @@ public class ItemController {
 		}
 		currentView = new ItemView(this, currentItem);
 	}
-	
 	
 	
 	

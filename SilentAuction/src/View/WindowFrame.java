@@ -10,9 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-
-import Model.Bidder;
 
 /**
  * A custom-sized JFrame object to hold
@@ -20,7 +17,7 @@ import Model.Bidder;
  * views.
  * 
  * @author reagan and tuan
- *
+ * @date 6/2/15
  */
 @SuppressWarnings("serial")
 public class WindowFrame extends JFrame{

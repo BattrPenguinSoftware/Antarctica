@@ -17,7 +17,6 @@ import javax.swing.border.EmptyBorder;
 
 import Controller.ItemController;
 import Model.Bid;
-import Model.Bidder;
 import Model.User;
 
 /**
@@ -27,7 +26,7 @@ import Model.User;
  * 
  * 
  * @author reagan
- *
+ * @date 6/2/15
  */
 public class ConfirmBidView extends AbstractView{
 	

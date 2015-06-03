@@ -8,7 +8,7 @@ import java.awt.Insets;
  * 
  * @author Cay Horstmann in Core Java, Volume 1: Fundamentals
  * @author Reagan Middlebrook (a few tiny changes marked at their methods)
- *
+ * @date 6/2/15
  */
 @SuppressWarnings("serial")
 public class GBC extends GridBagConstraints{

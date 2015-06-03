@@ -12,7 +12,7 @@ import Model.Auction;
  * A class to launch the GUI.
  * 
  * @author reagan
- *
+ * @date 6/2/15
  */
 public class StartGUI {
 	
