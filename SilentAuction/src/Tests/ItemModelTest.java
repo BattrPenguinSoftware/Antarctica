@@ -6,6 +6,7 @@ package Tests;
 import static org.junit.Assert.*;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -25,6 +26,8 @@ public class ItemModelTest {
 	private Image theImage;
 	
 	private Bid theNewBid;
+	
+	private ArrayList<Bid> bidHistory;
 	/*
 	 * Test for itemModel constructor
 	 */
@@ -41,13 +44,12 @@ public class ItemModelTest {
 	}
 	
 	@Test
-	public void testNewBid() {
+	public void testVerifyNewBid() {
 		
 		final ItemModel im = new ItemModel("iPad 2 16GB", theDoner, 111, theImage, 125.5, false);
 		double newBid = 130.5;
-		assertEquals("New Bid not correct!", 130.5, newBid, 0.01);
 		assertTrue("New bid has to be greater than current bid!", newBid > im.getCurrentBidPrice());
-		
+
 	}
 	
 	@Test
@@ -55,4 +57,8 @@ public class ItemModelTest {
 		
 	}
 	
+	@Test
+	public void testGetMaxBid() {
+		
+	}
 }
