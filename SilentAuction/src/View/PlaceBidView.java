@@ -7,9 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 
@@ -89,8 +92,41 @@ public class PlaceBidView extends AbstractView{
 		
 		JPanel cameraPanel = new JPanel();
 		cameraPanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
-		JLabel cameraText = new JLabel("video from camera feed will go here");
-		cameraPanel.add(cameraText);
+		JButton nameAgeButton = new JButton("Enter Bidder Information Here");
+		nameAgeButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				 WindowFrame frame = new WindowFrame();
+				 JPanel thepanel = new JPanel();
+				 frame.add(thepanel);
+				 frame.setVisible(true);
+				 
+				 thepanel.setVisible(true);
+				 thepanel.setLayout(new BoxLayout(thepanel, BoxLayout.Y_AXIS));
+				 
+				 JLabel bidderName = new JLabel("Bidder Name:");
+				 final JTextArea nameText = new JTextArea();
+				 JLabel bidderAge = new JLabel("Bidder Age:");
+				 final JSpinner ageSpinner = new JSpinner();
+				 thepanel.add(bidderName);
+				 thepanel.add(nameText);
+				 thepanel.add(bidderAge);
+				 thepanel.add(ageSpinner);
+				 
+				 final int age = (int) ageSpinner.getValue();
+				 
+				 JButton submit = new JButton("Submit");
+				 submit.addActionListener(new ActionListener() {
+					 public void actionPerformed(ActionEvent arg0) {
+						 Bidder b = new Bidder(nameText.getText(), null, null, age, null);
+					 }
+				 });
+				 
+			
+				 
+			}
+		});
+		cameraPanel.add(nameAgeButton);
 		result.add(cameraPanel);
 
 		//Add current high bid amount
