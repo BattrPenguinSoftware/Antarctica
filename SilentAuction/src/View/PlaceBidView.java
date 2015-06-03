@@ -2,11 +2,14 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -15,6 +18,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.EmptyBorder;
 
 import Controller.ItemController;
 import Model.Bidder;
@@ -96,8 +100,12 @@ public class PlaceBidView extends AbstractView{
 		nameAgeButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				 WindowFrame frame = new WindowFrame();
+				 final WindowFrame frame = new WindowFrame();
 				 JPanel thepanel = new JPanel();
+				 BoxLayout layout = new BoxLayout(thepanel, BoxLayout.Y_AXIS);
+					thepanel.setLayout(layout);
+					thepanel.setBorder(new EmptyBorder(new Insets(40, 60, 40, 60)));
+					thepanel.add(Box.createVerticalGlue());
 				 frame.add(thepanel);
 				 frame.setVisible(true);
 				 
@@ -106,8 +114,18 @@ public class PlaceBidView extends AbstractView{
 				 
 				 JLabel bidderName = new JLabel("Bidder Name:");
 				 final JTextArea nameText = new JTextArea();
+				 bidderName.setFont(bidderName.getFont().deriveFont(18.0f));
+				 
+				 nameText.setFont(nameText.getFont().deriveFont(18.0f));
+				 nameText.setMaximumSize(new Dimension(Integer.MAX_VALUE, nameText.getPreferredSize().height));
 				 JLabel bidderAge = new JLabel("Bidder Age:");
+				 bidderAge.setFont(bidderAge.getFont().deriveFont(18.0f));
+				 
+				 
 				 final JSpinner ageSpinner = new JSpinner();
+				 ageSpinner.setFont(ageSpinner.getFont().deriveFont(18.0f));
+				 ageSpinner.setMaximumSize(new Dimension(Integer.MAX_VALUE, ageSpinner.getPreferredSize().height));
+				 
 				 thepanel.add(bidderName);
 				 thepanel.add(nameText);
 				 thepanel.add(bidderAge);
@@ -115,15 +133,16 @@ public class PlaceBidView extends AbstractView{
 				 
 				 final int age = (int) ageSpinner.getValue();
 				 
+				 //submit button
 				 JButton submit = new JButton("Submit");
 				 submit.addActionListener(new ActionListener() {
 					 public void actionPerformed(ActionEvent arg0) {
-						 Bidder b = new Bidder(nameText.getText(), null, null, age, null);
+						 theBidder = new Bidder(nameText.getText(), null, null, age, null);
+						 frame.dispose();
 					 }
 				 });
-				 
-			
-				 
+				 thepanel.add(submit);
+				 thepanel.add(Box.createVerticalGlue());
 			}
 		});
 		cameraPanel.add(nameAgeButton);
