@@ -71,8 +71,8 @@ public class PlaceBidView extends AbstractView{
 		this.iController = iController;
 		frame = super.getFrame();
 		pane = initializePane();
-		//TODO: correct this so theBidder starts as null and updates at login	
-		theBidder = new Bidder("Mary Lou Haggens", "206-673-2343", "mlhay@gmail.com", 17, "4567");
+		
+		theBidder = null;
 		frame.add(pane);
 		
 	}
@@ -131,12 +131,16 @@ public class PlaceBidView extends AbstractView{
 				 thepanel.add(bidderAge);
 				 thepanel.add(ageSpinner);
 				 
-				 final int age = (int) ageSpinner.getValue();
+
+				 
 				 
 				 //submit button
 				 JButton submit = new JButton("Submit");
 				 submit.addActionListener(new ActionListener() {
 					 public void actionPerformed(ActionEvent arg0) {
+						 //Moved getValue() into the button click so it gets the 
+						 //updated value, not the initial zero value --Reagan
+						 final Integer age = (Integer) ageSpinner.getValue();
 						 theBidder = new Bidder(nameText.getText(), null, null, age, null);
 						 frame.dispose();
 					 }
