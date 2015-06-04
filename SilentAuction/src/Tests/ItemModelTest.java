@@ -49,7 +49,7 @@ public class ItemModelTest {
 		final ItemModel im = new ItemModel("iPad 2 16GB", theDoner, 111, theImage, 125.5, false);
 		double newBid = 130.5;
 		assertTrue("New bid has to be greater than current bid!", newBid > im.getCurrentBidPrice());
-
+		assertFalse("Failed!", im.getCurrentBidPrice() < newBid);
 	}
 	
 	@Test
