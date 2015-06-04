@@ -4,7 +4,7 @@
 package Model;
 
 /**
- * @author Audrey Chavarria
+ * @author Audrey Chavarria 6/3/15
  *
  */
 public class UserConcrete extends User {
