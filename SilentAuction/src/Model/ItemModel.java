@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * The Class ItemModel, represents an item.
  * 
- * @author Audrey Chavarria 5/21/15
+ * @author Audrey Chavarria 6/2/15
  * 
  */
 public class ItemModel {
@@ -29,6 +29,7 @@ public class ItemModel {
 	/** The current bid. */
 	private double currentBid;
 	
+	/** The flag that tells wether the item is alcoholic. */
 	private boolean isAlcoholic;
 
 	/**
