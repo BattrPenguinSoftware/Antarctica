@@ -1,4 +1,4 @@
-package Model;
+package Tests;
 
 
 import javax.swing.ImageIcon;
@@ -8,13 +8,18 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import Model.Bid;
+import Model.Bidder;
+import Model.Donor;
+import Model.ItemModel;
+
 /**
  * A class to perform JUnit tests on Bid.java.
  * 
  * @author reagan
  * @date 6/3/15
  */
-public class BidTest2 {
+public class BidTest {
 	private Bid bidOne;
 	private Bid bidTwo;
 	private Bidder alanna;

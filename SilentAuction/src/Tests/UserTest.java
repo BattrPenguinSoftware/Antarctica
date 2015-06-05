@@ -1,12 +1,15 @@
 /**
  * 
  */
-package Model;
+package Tests;
 
 import static org.junit.Assert.*;
 import junit.framework.TestCase;
 
 import org.junit.Test;
+
+import Model.User;
+import Model.UserConcrete;
 
 /**
  * @author Audrey Chavarria, 6/3/2015
