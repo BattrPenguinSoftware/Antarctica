@@ -2,20 +2,13 @@ package Model;
 
 import static org.junit.Assert.*;
 
-import java.awt.Image;
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 public class ItemModelTest {
 	
 	private Bidder bidders;
 	
-	private static double myNewBid = 130.5;
-	
 	private Donor theDonor;
-	
-	private ArrayList<Bid> bidHistory = new ArrayList<Bid>();
 	
 	@Test
 	public void testItemModelConstructor() {
