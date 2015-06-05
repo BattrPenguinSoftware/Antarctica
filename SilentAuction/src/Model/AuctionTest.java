@@ -29,11 +29,6 @@ public class AuctionTest {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	public void testAddItem() {
-		test.addItem(testItem);
-		assertEquals()
-	}
 
 	@Test
 	public void testGetItems() {

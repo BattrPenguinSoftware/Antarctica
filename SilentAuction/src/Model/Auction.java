@@ -28,8 +28,10 @@ public class Auction {
 		//an item to start out with
 		try{
 			
-			Image itemImage = new ImageIcon("resources/Cheetarah.jpg").getImage();
-			Image logo = new ImageIcon("resources/pop_logo.png").getImage();
+			// Create Images
+			Image itemImage = new ImageIcon(this.getClass().getResource("/pictures/Cheetarah.jpg")).getImage();
+			Image logo = new ImageIcon(this.getClass().getResource("/pictures/pop_logo.png")).getImage();
+			
 			ItemModel defaultItem = new ItemModel("Cheetarah Vinyl Figure", 
 					new Donor("Ada Larson", 
 					"206-534-6789", "alarson@gmail.com", 24, "1004", logo, "POP Vinyl"),
