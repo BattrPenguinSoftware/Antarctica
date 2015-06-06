@@ -18,6 +18,7 @@ public class AuctionTest {
 	public void setUp() throws Exception {
 		test = new Auction();
 		testItem = new ItemModel("testItem", testDoner, 0, null, 20.0, false);
+		test.addItem(testItem);
 	}
 
 	@After
@@ -26,13 +27,13 @@ public class AuctionTest {
 
 	@Test
 	public void testAuction() {
-		fail("Not yet implemented");
+		assertTrue(test != null);
 	}
-
 
 	@Test
 	public void testGetItems() {
-		fail("Not yet implemented");
+		assertTrue(!test.getItems().isEmpty());
+		assertEquals(testItem.getName(), test.getItems().get(1).getName());
 	}
 
 }
