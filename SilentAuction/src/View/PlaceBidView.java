@@ -165,7 +165,7 @@ public class PlaceBidView extends AbstractView{
 		result.add(errorLabel);
 		
 		//Let user enter new bid
-		//TODO: Recreate with fancy scrolling numbers
+		
 		JLabel placeBidInstructions = new JLabel("Enter your new bid below");
 		placeBidInstructions.setFont(highBid.getFont().deriveFont(INSTRUCTION_FONT));
 		result.add(placeBidInstructions);
@@ -233,7 +233,6 @@ public class PlaceBidView extends AbstractView{
 	 *
 	 * @param attemptedAmount the attempted amount
 	 */
-	//TODO: Make this work
 	public void bidHigher(Double attemptedAmount) {
 		errorLabel.setText(String.format("<html>Your bid is too low.<br>It must be higher than the" 
 				+ "<br>current bid amount of $%.2f</html>", currentBidAmount));
