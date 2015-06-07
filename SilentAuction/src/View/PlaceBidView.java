@@ -27,7 +27,7 @@ import Model.Bidder;
  * The view that allows a user to place
  * a bid.
  *
- * @author reagan
+ * @author Reagan, Ben (one button)
  * @date 6/2/15
  */
 public class PlaceBidView extends AbstractView{
@@ -94,6 +94,7 @@ public class PlaceBidView extends AbstractView{
 		//instructions.setAlignmentX(.5f);
 		result.add(instructions);
 		
+		//written by Ben
 		JPanel cameraPanel = new JPanel();
 		cameraPanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
 		JButton nameAgeButton = new JButton("Enter Bidder Information Here");
@@ -130,10 +131,7 @@ public class PlaceBidView extends AbstractView{
 				 thepanel.add(nameText);
 				 thepanel.add(bidderAge);
 				 thepanel.add(ageSpinner);
-				 
-
-				 
-				 
+				
 				 //submit button
 				 JButton submit = new JButton("Submit");
 				 submit.addActionListener(new ActionListener() {
