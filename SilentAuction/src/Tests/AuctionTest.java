@@ -36,6 +36,7 @@ public class AuctionTest {
 	 * Set up method
 	 * @throws Exception
 	 */
+	@Before
 	public void setUp() throws Exception {
 		test = new Auction();
 		testItem = new ItemModel("testItem", testDoner, 0, null, 20.0, false);
@@ -46,12 +47,14 @@ public class AuctionTest {
 	 * Tear down method.
 	 * @throws Exception
 	 */
+	@After
 	public void tearDown() throws Exception {
 	}
 
 	/**
 	 * Tests that auction is created
 	 */
+	@Test
 	public void testAuction() {
 		assertTrue(test != null);
 	}
@@ -59,6 +62,7 @@ public class AuctionTest {
 	/**
 	 * Gets the items and confirms place and name
 	 */
+	@Test
 	public void testGetItems() {
 		assertTrue(!test.getItems().isEmpty());
 		assertEquals(testItem.getName(), test.getItems().get(1).getName());
