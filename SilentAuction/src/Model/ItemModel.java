@@ -29,6 +29,7 @@ public class ItemModel {
 	/** The current bid. */
 	private double currentBid;
 	
+	/** the flag that tells whether the item is alcoholic. */
 	private boolean isAlcoholic;
 
 	/**
@@ -37,8 +38,9 @@ public class ItemModel {
 	 * @param theName            of the item
 	 * @param theDonor            of the item
 	 * @param theItemNumber            that uniquely identifies it
-	 * @param theImage the the image
+	 * @param theImage the image
 	 * @param initialPrice the initial price
+	 * @param isItADrink the is it a drink
 	 */
 	public ItemModel(String theName, Donor theDonor, int theItemNumber,
 			Image theImage, double initialPrice, boolean isItADrink) {
@@ -52,13 +54,18 @@ public class ItemModel {
 
 	}
 	
+	/**
+	 * Checks if is alcoholic.
+	 *
+	 * @return true, if is alcoholic
+	 */
 	public boolean isAlcoholic(){
 		return isAlcoholic;
 	}
 
 	/**
-	 * Verify new bid and tells wether . somoneone try to place a new bid, verify checks current
-	 * bid price and says if its is new bidd is greater than current price
+	 * Verify new bid and tells whether someone try to place a new bid, verify checks current
+	 * bid price and says if its new bid is greater than current price
 	 *
 	 * @param newBid the new bid
 	 * @return true, if successful
@@ -67,25 +74,17 @@ public class ItemModel {
 		return newBid > currentBid;
 	}
 
-	// add to end of arryalsit, and update current highest bid
 	/**
 	 * Place new bid.
 	 *
 	 * @param theNewBid the the new bid
 	 */
 	public void placeNewBid(Bid theNewBid) {
+		// add to end of arryalsit, and update current highest bid
 		bidHistory.add(theNewBid);
 		currentBid = theNewBid.getAmount();
 
 	}
-
-	// ///////////******<<<>>>>*****////////////////
-	/**
-	 * Saveinfo. worry about it later
-	 */
-//	private void saveinfo() {
-//		
-//	}// ////////////////////////////
 
 	/**
 	 * Gets the entire bid history. 

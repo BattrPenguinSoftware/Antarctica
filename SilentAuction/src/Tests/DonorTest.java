@@ -9,7 +9,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Model.ItemModel;
-
+/**
+ * tests the donor class
+ * @author Todd
+ */
 public class DonorTest {
 	String company;
 	Image logo;

@@ -1,4 +1,4 @@
-package Model;
+package Tests;
 
 import static org.junit.Assert.*;
 
@@ -6,8 +6,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+<<<<<<< HEAD:SilentAuction/src/Model/AuctionTest.java
 /**
  * Class to test auction class.
+=======
+import Model.Auction;
+import Model.Donor;
+import Model.ItemModel;
+/**
+ * tests the auction class
+>>>>>>> e9076134d8ff1ebd90e319d5b8f4f2317ec5710e:SilentAuction/src/Tests/AuctionTest.java
  * @author Ben
  *
  */

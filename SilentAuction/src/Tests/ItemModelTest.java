@@ -1,77 +1,69 @@
-/**
- * 
- */
 package Tests;
 
 import static org.junit.Assert.*;
-
-import java.awt.Image;
-import java.util.ArrayList;
 
 import org.junit.Test;
 
 import Model.Bid;
 import Model.Bidder;
-import Model.ItemModel;
 import Model.Donor;
-
-/**
- * @author tuanhuynh
- *
- */
+import Model.ItemModel;
 
 public class ItemModelTest {
 	
-	private Donor theDoner;
+	private Bidder bidders;
 	
-	private Image theImage;
-	
-	private ArrayList<Bid> bidHistory;
-	
-	private ItemModel im;
-	
-	private Bid myNewBid;
-	
-	private Bidder theBidder;
-	
-	private double newBid = 130.5;
-	
-	private double currentBid = 125.5;
-	/*
-	 * Test for itemModel constructor
-	 */
-	
-	public void setUp() {
-		im = new ItemModel("iPad 2 16GB", theDoner, 111, theImage, currentBid, false);
-		myNewBid = new Bid(newBid, theBidder, im);
-	}
+	private Donor theDonor;
 	
 	@Test
 	public void testItemModelConstructor() {
-		im = new ItemModel("iPad 2 16GB", theDoner, 111, theImage, 125.5, false);
-		assertEquals("Item name not correctly!", "iPad 2 16GB", im.getName());
-		assertEquals("Item Number does not match!!", 111, im.getItemNumber());
-		assertEquals("item price does not equal!", 125.5, im.getCurrentBidPrice(), 0.001);
-		assertFalse("Item is not alcohol!", im.isAlcoholic());
+		//add new item
+		
+		ItemModel im = new ItemModel("iPad 16GB", theDonor, 111, null, 125.5, false);
+		
+		assertEquals("Name Bot Found!", "iPad 16GB", im.getName());
+		assertEquals("Item Number Not Found!", 111, im.getItemNumber());
+		assertEquals("Current Bid Not Found!", 125.5, im.getCurrentBidPrice(), 0.01);
+		//check item is not alcohol
+		assertFalse("Check Alcohol Failed!", im.isAlcoholic());
 	}
 	
 	@Test
-	public void testVerifyNewBid() {
-		
-		
+	public void testGetDonor() {
+		theDonor = new Donor("Reagan", "206-333-1111", "reagan@gmail.com", 26, null, null, null);
+		ItemModel im = new ItemModel("iPad 16GB", theDonor, 111, null, 125.5, false);
+		assertTrue(theDonor.equals(im.getDonor()));
 	}
 	
 	@Test
 	public void testPlaceNewBid() {
-		im = new ItemModel("iPad 2 16GB", theDoner, 111, theImage, 125.5, false);
-		myNewBid = new Bid(newBid, theBidder, im);
-		bidHistory.add(myNewBid);
-		currentBid = myNewBid.getAmount();
-		assertEquals("bid failed!", newBid > currentBid);
+		
+		double myNewBid = 130.5;
+		ItemModel im = new ItemModel("iPad 16GB", theDonor, 111, null, 125.5, false);
+		Bid newBid = new Bid(myNewBid, bidders, im);
+//		bidHistory.add(newBid);
+		im.placeNewBid(newBid);
+		//check size of array list = 1 when add 1 item
+		assertEquals("Array Size Not Null!", 1,im.getBidHistory().size());
+		assertEquals("New Bid Failed!", myNewBid , newBid.getAmount(), 0.01);
+		
+	}
+	@Test
+	public void testVerifyNewBid() {
+		double theNewBid = 140.5;
+		ItemModel im = new ItemModel("iPad 16GB", theDonor, 111, null, 130.5, false);
+				
+		assertTrue("New Bid Not greater!", im.verifyNewBid(theNewBid));
+		theNewBid = 1.0;
+		assertFalse("", im.verifyNewBid(theNewBid));
 	}
 	
 	@Test
 	public void testGetMaxBid() {
-		
+		ItemModel im = new ItemModel("iPad 16GB", theDonor, 111, null, 130.5, false);
+		double myMaxBid = 140.5;
+		Bid newBid = new Bid(myMaxBid, bidders, im);
+		im.placeNewBid(newBid);
+		assertEquals(newBid, im.getMaxBid());
 	}
 }
