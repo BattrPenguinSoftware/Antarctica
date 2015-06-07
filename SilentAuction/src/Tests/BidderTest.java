@@ -9,7 +9,10 @@ import org.junit.Test;
 
 import Model.Bid;
 import Model.Bidder;
-
+/**
+ * tests bidder class
+ * @author Todd
+ */
 public class BidderTest {
 	
 	private ArrayList<Bid> bidHistory = new ArrayList<Bid>();

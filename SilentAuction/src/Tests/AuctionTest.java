@@ -1,4 +1,4 @@
-package Model;
+package Tests;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import Model.Auction;
+import Model.Donor;
+import Model.ItemModel;
+/**
+ * tests the auction class
+ * @author Ben
+ *
+ */
 public class AuctionTest {
 	
 	Auction test;
