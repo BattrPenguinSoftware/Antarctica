@@ -1,9 +1,5 @@
-/**
- * 
- */
 package Model;
 
-// TODO: Auto-generated Javadoc
 /**
  * Class that extends user and allows for a constructor to be built so that
  * the abstract class can be tested.
