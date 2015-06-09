@@ -27,7 +27,7 @@ import Model.Bidder;
  * The view that allows a user to place
  * a bid.
  *
- * @author reagan
+ * @author Reagan, Ben (one button)
  * @date 6/2/15
  */
 public class PlaceBidView extends AbstractView{
@@ -94,6 +94,7 @@ public class PlaceBidView extends AbstractView{
 		//instructions.setAlignmentX(.5f);
 		result.add(instructions);
 		
+		//written by Ben
 		JPanel cameraPanel = new JPanel();
 		cameraPanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
 		JButton nameAgeButton = new JButton("Enter Bidder Information Here");
@@ -130,10 +131,7 @@ public class PlaceBidView extends AbstractView{
 				 thepanel.add(nameText);
 				 thepanel.add(bidderAge);
 				 thepanel.add(ageSpinner);
-				 
-
-				 
-				 
+				
 				 //submit button
 				 JButton submit = new JButton("Submit");
 				 submit.addActionListener(new ActionListener() {
@@ -167,7 +165,7 @@ public class PlaceBidView extends AbstractView{
 		result.add(errorLabel);
 		
 		//Let user enter new bid
-		//TODO: Recreate with fancy scrolling numbers
+		
 		JLabel placeBidInstructions = new JLabel("Enter your new bid below");
 		placeBidInstructions.setFont(highBid.getFont().deriveFont(INSTRUCTION_FONT));
 		result.add(placeBidInstructions);
@@ -235,7 +233,6 @@ public class PlaceBidView extends AbstractView{
 	 *
 	 * @param attemptedAmount the attempted amount
 	 */
-	//TODO: Make this work
 	public void bidHigher(Double attemptedAmount) {
 		errorLabel.setText(String.format("<html>Your bid is too low.<br>It must be higher than the" 
 				+ "<br>current bid amount of $%.2f</html>", currentBidAmount));

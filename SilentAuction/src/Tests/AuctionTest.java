@@ -9,6 +9,7 @@ import org.junit.Test;
 import Model.Auction;
 import Model.Donor;
 import Model.ItemModel;
+
 /**
  * tests the auction class
  * @author Ben
@@ -16,12 +17,25 @@ import Model.ItemModel;
  */
 public class AuctionTest {
 	
+	/**
+	 * Test auction object
+	 */
 	Auction test;
 	
+	/**
+	 * Item added to auction
+	 */
 	ItemModel testItem;
 	
+	/**
+	 * Donor added to test item.
+	 */
 	Donor testDoner;
 
+	/**
+	 * Set up method
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		test = new Auction();
@@ -29,15 +43,25 @@ public class AuctionTest {
 		test.addItem(testItem);
 	}
 
+	/**
+	 * Tear down method.
+	 * @throws Exception
+	 */
 	@After
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Tests that auction is created
+	 */
 	@Test
 	public void testAuction() {
 		assertTrue(test != null);
 	}
 
+	/**
+	 * Gets the items and confirms place and name
+	 */
 	@Test
 	public void testGetItems() {
 		assertTrue(!test.getItems().isEmpty());
